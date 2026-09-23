@@ -30,25 +30,17 @@
         }
     };
 
-    function applyToolkitTheme(theme) {
-        var themeLink = document.getElementById('syncfusion-theme');
-        if (themeLink) {
-            themeLink.href = theme === 'highcontrast'
-                ? '_content/Syncfusion.Blazor.Toolkit/styles/highcontrast.min.css'
-                : '_content/Syncfusion.Blazor.Toolkit/styles/fluent.min.css';
-        }
-
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        document.documentElement.classList.toggle('highcontrast', theme === 'highcontrast');
-        document.body.classList.toggle('e-dark-mode', theme === 'dark');
-    }
-
-    // Theme init: returns 'light', 'dark', or 'highcontrast'
+    // Theme init: returns 'dark' or 'light'
     window.mainLayout.initTheme = function(){
         try{
             var t = localStorage.getItem('theme') || 'light';
-            if (t !== 'dark' && t !== 'highcontrast') { t = 'light'; }
-            applyToolkitTheme(t);
+            if (t === 'dark'){
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('e-dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('e-dark-mode');
+            }
             return t;
         } catch(e){ return 'light'; }
     };
@@ -87,9 +79,14 @@
     // Set theme and persist
     window.mainLayout.setTheme = function(theme){
         try{
-            if (theme !== 'dark' && theme !== 'highcontrast') { theme = 'light'; }
             localStorage.setItem('theme', theme);
-            applyToolkitTheme(theme);
+            if (theme === 'dark'){
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('e-dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('e-dark-mode');
+            }
 
             window.dispatchEvent(new CustomEvent('mainlayout-themechanged', { detail: theme }));
         } catch(e){}
@@ -110,8 +107,7 @@
                 window.addEventListener('mainlayout-themechanged', window.mainLayout._themeHandler);
             }
 
-            var currentTheme = localStorage.getItem('theme') || 'light';
-            if (currentTheme !== 'dark' && currentTheme !== 'highcontrast') { currentTheme = 'light'; }
+            var currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
             dotNetRef.invokeMethodAsync('NotifyThemeChanged', currentTheme);
         } catch(e){}
     };
