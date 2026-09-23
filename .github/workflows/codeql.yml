@@ -1,0 +1,83 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: csharp
+            build-mode: manual
+          - language: javascript-typescript
+            build-mode: none
+          - language: actions
+            build-mode: none
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      - name: Setup .NET
+        if: matrix.language == 'csharp'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: |
+            8.x
+            9.x
+            10.x
+
+      - name: Setup Node.js
+        if: matrix.language == 'csharp'
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        if: matrix.language == 'csharp'
+        run: npm ci --no-fund --no-audit
+
+      - name: Build C# code for CodeQL
+        if: matrix.build-mode == 'manual'
+        working-directory: ./src
+        run: |
+          dotnet restore ./Syncfusion.Blazor.Toolkit.slnx
+          dotnet build ./Syncfusion.Blazor.Toolkit.slnx \
+            --configuration Release \
+            --no-restore
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:${{ matrix.language }}"
