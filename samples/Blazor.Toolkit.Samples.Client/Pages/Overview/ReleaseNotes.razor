@@ -1,0 +1,601 @@
+@page "/release-notes"
+@page "/release-notes/{version}"
+@inject HttpClient Http
+@inject ILogger<ReleaseNotes> Logger
+@inject NavigationManager NavigationManager
+
+<PageTitle>Release Notes @(string.IsNullOrEmpty(DisplayVersion) ? "" : $"- v{DisplayVersion}") | Syncfusion Blazor Toolkit</PageTitle>
+
+@* Main Content Area Only - Layout sidebars are in MainLayout *@
+<main class="release-notes-main" @ref="_mainContentRef">
+    @if (IsLoading)
+    {
+        <div class="loading-container">
+            <div class="skeleton-loader">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-meta"></div>
+                <div class="skeleton skeleton-heading"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text short"></div>
+            </div>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="error-container">
+            <div class="error-icon">⚠️</div>
+            <h2>Unable to Load Release Notes</h2>
+            <p>@ErrorMessage</p>
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(HtmlContent))
+    {
+        <article class="release-content">
+            @* Content Header *@
+            <header class="content-header">
+                <h1 class="release-title">Syncfusion Toolkit for Blazor - v@(DisplayVersion) Release Notes</h1>
+                <div class="release-meta">
+                    <span class="meta-badge version-badge-large">
+                        <span class="badge-icon">📦</span> v@(DisplayVersion)
+                    </span>
+                    @if (!string.IsNullOrEmpty(ReleaseDate))
+                    {
+                        <span class="meta-badge date-badge">
+                            <span class="badge-icon">📅</span> @ReleaseDate
+                        </span>
+                    }
+                    @* Version Dropdown - Driven by versions.json *@
+                    @if (AvailableVersions.Count > 0)
+                    {
+                        <div class="version-bar">
+                            <label for="versionSelect">Version</label>
+                            <select id="versionSelect" value="@SelectedVersion" @onchange="OnVersionChanged" disabled="@IsLoading">
+                                @foreach (var ver in AvailableVersions)
+                                {
+                                    <option value="@ver" selected="@(ver == SelectedVersion)">@ver</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                </div>
+            </header>
+
+            @* Rendered Markdown Content *@
+            <div class="markdown-content" id="markdown-content">
+                @((MarkupString)HtmlContent)
+            </div>
+        </article>
+    }
+</main>
+
+@code {
+    [Parameter]
+    public string? Version { get; set; }
+
+    private bool IsLoading { get; set; } = true;
+    private string HtmlContent { get; set; } = string.Empty;
+    private string ErrorMessage { get; set; } = string.Empty;
+    private string SelectedVersion { get; set; } = string.Empty;
+    private string DisplayVersion { get; set; } = string.Empty;
+    private string ReleaseDate { get; set; } = string.Empty;
+    private List<string> AvailableVersions { get; set; } = new();
+    private const string DefaultVersion = "v1.0.1";
+
+    private ElementReference _mainContentRef;
+    private DotNetObjectReference<ReleaseNotes>? _dotNetRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _dotNetRef = DotNetObjectReference.Create(this);
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await InitializeAsync().ConfigureAwait(true);
+    }
+
+    private async Task InitializeAsync()
+    {
+        try
+        {
+            // Load available versions (once)
+            await LoadAvailableVersionsAsync().ConfigureAwait(true);
+
+            // Bundle loading state update in InvokeAsync
+            await InvokeAsync(() =>
+            {
+                IsLoading = true;
+                ErrorMessage = string.Empty;
+                HtmlContent = string.Empty;
+                StateHasChanged();
+            }).ConfigureAwait(true);
+
+            // Resolve version
+            string versionToLoad;
+            if (!string.IsNullOrEmpty(Version))
+            {
+                // Always honor the URL parameter when present
+                versionToLoad = Version.StartsWith("v") ? Version : "v" + Version;
+
+                // If the requested version is not in the versions.json list,
+                // still honor the request (don't silently swap to a different version).
+                Logger.LogInformation("Requested version from URL: {Version}", versionToLoad);
+            }
+            else
+            {
+                // Default to the newest version listed in versions.json.
+                // Pick by highest semantic version (defensive against JSON ordering).
+                versionToLoad = PickDefaultVersion(AvailableVersions)
+                    ?? DefaultVersion;
+                Logger.LogInformation("Defaulted to version: {Version}", versionToLoad);
+            }
+
+            if (versionToLoad != SelectedVersion)
+            {
+                SelectedVersion = versionToLoad;
+                DisplayVersion = versionToLoad.TrimStart('v');
+                await LoadReleaseNotesAsync().ConfigureAwait(true);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Initialization failed");
+            await InvokeAsync(() =>
+            {
+                ErrorMessage = ex.Message;
+                IsLoading = false;
+                StateHasChanged();
+            }).ConfigureAwait(true);
+        }
+    }
+
+    private async Task LoadReleaseNotesAsync()
+    {
+        var cleanVersion = SelectedVersion.TrimStart('v');
+        Logger.LogInformation("Loading release notes for version: {Version}", cleanVersion);
+
+        // Build absolute URL using NavigationManager base address
+        var baseUri = NavigationManager.BaseUri;
+        var markdownUrl = $"{baseUri}release-notes/v{cleanVersion}.md";
+        
+        var markdown = await Http.GetStringAsync(markdownUrl).ConfigureAwait(true);
+        
+        // Extract release date from YAML front matter if present
+        var releaseDate = ExtractReleaseDate(markdown);
+        
+        // Remove YAML front matter
+        if (markdown.StartsWith("---"))
+        {
+            var endIndex = markdown.IndexOf("---", 3);
+            if (endIndex > 0)
+            {
+                markdown = markdown[(endIndex + 3)..].Trim();
+            }
+        }
+
+        // Convert Markdown to HTML
+        var html = Markdig.Markdown.ToHtml(markdown);
+
+        // Check if content has New Contributors section
+        var hasNewContributors = markdown.Contains("New Contributors", StringComparison.OrdinalIgnoreCase);
+        Logger.LogInformation("HasNewContributors: {HasNew}", hasNewContributors);
+
+        // Add IDs to h2 and h3 headings for TOC linking
+        html = AddHeadingIdsToHtml(html);
+        Logger.LogInformation("Converted to HTML, length: {Length}", html.Length);
+        
+        // Bundle ALL state updates in InvokeAsync for guaranteed render
+        await InvokeAsync(async () =>
+        {
+            HtmlContent = html;
+            ReleaseDate = releaseDate;
+            IsLoading = false;
+            StateHasChanged();
+            
+            // Yield to ensure render completes before TOC refresh
+            await Task.Yield();
+        }).ConfigureAwait(true);
+    }
+
+    private string ExtractReleaseDate(string markdown)
+    {
+        // Try to extract date from YAML front matter
+        var dateRegex = new System.Text.RegularExpressions.Regex(@"date:\s*(\d{1,2}-\w+-\d{4})", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        var match = dateRegex.Match(markdown);
+        if (match.Success)
+        {
+            if (DateTime.TryParse(match.Groups[1].Value, out var date))
+            {
+                return date.ToString("MMMM dd, yyyy");
+            }
+        }
+        
+        // Fallback to original pattern for YYYY-MM-DD format
+        dateRegex = new System.Text.RegularExpressions.Regex(@"date:\s*(\d{4}-\d{2}-\d{2})", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        match = dateRegex.Match(markdown);
+        if (match.Success)
+        {
+            return DateTime.Parse(match.Groups[1].Value).ToString("MMMM dd, yyyy");
+        }
+        
+        // Look for date in various formats in the content
+        var patterns = new[]
+        {
+            @"(\d{1,2}\s+\w+\s+\d{4})",
+            @"(\w+\s+\d{1,2},\s+\d{4})",
+            @"(\d{4}-\d{2}-\d{2})"
+        };
+        
+        foreach (var pattern in patterns)
+        {
+            var dateMatch = new System.Text.RegularExpressions.Regex(pattern).Match(markdown);
+            if (dateMatch.Success)
+            {
+                if (DateTime.TryParse(dateMatch.Groups[1].Value, out var date))
+                {
+                    return date.ToString("MMMM dd, yyyy");
+                }
+            }
+        }
+        
+        return DateTime.Now.ToString("MMMM dd, yyyy"); // Default fallback
+    }
+
+    private string AddHeadingIdsToHtml(string html)
+    {
+        // Add id attributes to h2 and h3 headings for TOC linking
+        var regex = new System.Text.RegularExpressions.Regex(@"<(h[23])[^>]*>([^<]+)</h[23]>", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        return regex.Replace(html, match =>
+        {
+            var tag = match.Groups[1].Value;
+            var text = match.Groups[2].Value.Trim();
+            var id = GenerateSlug(text);
+            return $"<{tag} id=\"{id}\">{text}</{tag}>";
+        });
+    }
+
+    private string GenerateSlug(string text)
+    {
+        return text.ToLowerInvariant()
+            .Replace(" ", "-")
+            .Replace(".", "")
+            .Replace(":", "")
+            .Replace("(", "")
+            .Replace(")", "")
+            .Replace(",", "")
+            .Replace(";", "");
+    }
+
+    private async Task OnVersionChanged(ChangeEventArgs e)
+    {
+        if (e.Value is not string selected || string.IsNullOrWhiteSpace(selected))
+        {
+            return;
+        }
+
+        // Normalize and navigate; navigation triggers OnParametersSetAsync
+        // which calls InitializeAsync and reloads the markdown.
+        var normalized = selected.StartsWith("v") ? selected : "v" + selected;
+        var targetUri = $"release-notes/{normalized.TrimStart('v')}";
+        NavigationManager.NavigateTo(targetUri);
+
+        await Task.CompletedTask;
+    }
+
+    private async Task LoadAvailableVersionsAsync()
+    {
+        // Only short-circuit when we have a real (multi-entry) list already.
+        // A singleton fallback from a previous failed fetch is allowed to retry.
+        if (AvailableVersions.Count > 1)
+        {
+            return;
+        }
+
+        try
+        {
+            // Build an absolute URL. NavigationManager.BaseUri in interactive mode
+            // is the app origin; in prerender the same property reflects the request URL.
+            // Either way, GetFromJsonAsync needs an absolute address to consistently resolve.
+            var baseUri = NavigationManager.BaseUri?.TrimEnd('/') ?? string.Empty;
+            var url = string.IsNullOrEmpty(baseUri)
+                ? "release-notes/versions.json"
+                : $"{baseUri}/release-notes/versions.json";
+            var versions = await Http.GetFromJsonAsync<List<string>>(url).ConfigureAwait(true);
+
+            if (versions is not null && versions.Count > 0)
+            {
+                AvailableVersions = versions;
+                Logger.LogInformation("Loaded {Count} versions from versions.json: [{List}]",
+                    versions.Count, string.Join(", ", versions));
+            }
+            else
+            {
+                Logger.LogWarning("versions.json was empty; falling back to default.");
+                AvailableVersions = new List<string> { DefaultVersion };
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Failed to load versions.json; falling back to default.");
+            AvailableVersions = new List<string> { DefaultVersion };
+        }
+
+        await InvokeAsync(StateHasChanged).ConfigureAwait(true);
+    }
+
+    public void Dispose()
+    {
+        _dotNetRef?.Dispose();
+    }
+
+    /// <summary>
+    /// Picks the highest semantic version from the supplied list (defensive against
+    /// arbitrary ordering of <c>versions.json</c>). Falls back to the first entry
+    /// when versions cannot be parsed, and to <c>null</c> when the list is empty.
+    /// </summary>
+    private static string? PickDefaultVersion(IEnumerable<string> versions)
+    {
+        if (versions is null)
+        {
+            return null;
+        }
+
+        var entries = versions
+            .Where(v => !string.IsNullOrWhiteSpace(v))
+            .Select(v => v.TrimStart('v', 'V'))
+            .ToList();
+
+        if (entries.Count == 0)
+        {
+            return null;
+        }
+
+        System.Version? bestParsed = null;
+        string? bestRaw = null;
+        foreach (var raw in entries)
+        {
+            var cleaned = raw.Split('-')[0]; // strip pre-release suffix
+            if (System.Version.TryParse(cleaned, out var parsed))
+            {
+                if (bestParsed is null || parsed > bestParsed)
+                {
+                    bestParsed = parsed;
+                    bestRaw = "v" + raw;
+                }
+            }
+            else if (bestParsed is null)
+            {
+                // keep first unparseable candidate as last-resort fallback
+                bestRaw ??= "v" + raw;
+            }
+        }
+
+        return bestRaw ?? ("v" + entries[0]);
+    }
+}
+
+<style>
+    /* Release Notes Main Content - Uses existing layout (no duplicate sidebars) */
+    .release-notes-main {
+        max-width: 100%;
+    }
+
+    .content-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .release-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-color, #1f2937);
+        margin: 0 0 1rem 0;
+        line-height: 1.3;
+    }
+
+    .release-meta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .meta-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--panel-bg, #f9fafb);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    .version-badge-large {
+        background: var(--accent, #2B357C);
+        color: var(--accent-foreground, #ffffff);
+        border-color: var(--accent, #2B357C);
+    }
+
+    .date-badge {
+        color: var(--text-color, #1f2937);
+    }
+
+    .badge-icon {
+        font-size: 1rem;
+    }
+
+    
+
+    /* Version Bar */
+    .version-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-left: auto;
+    }
+
+    .version-bar label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-color, #1f2937);
+    }
+
+    .version-bar select {
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        background: white;
+        font-size: 0.9rem;
+        cursor: pointer;
+        min-width: 9rem;
+    }
+
+    .version-bar select:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    /* Loading State - Skeleton */
+    .loading-container {
+        padding: 2rem 0;
+    }
+
+    .skeleton-loader {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 4px;
+    }
+
+    .skeleton-title {
+        height: 2.5rem;
+        width: 70%;
+    }
+
+    .skeleton-meta {
+        height: 1.5rem;
+        width: 40%;
+    }
+
+    .skeleton-heading {
+        height: 1.5rem;
+        width: 50%;
+        margin-top: 1rem;
+    }
+
+    .skeleton-text {
+        height: 1rem;
+        width: 100%;
+    }
+
+    .skeleton-text.short {
+        width: 75%;
+    }
+    
+    @@keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+
+    /* Error State */
+    .error-container {
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+    .error-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .error-container h2 {
+        color: var(--text-color, #1f2937);
+        margin-bottom: 0.5rem;
+    }
+
+    .error-container p {
+        color: var(--text-color-secondary, #6b7280);
+    }
+
+    /* Markdown Content Styles */
+    .markdown-content {
+        line-height: 1.7;
+        color: var(--text-color, #1f2937);
+    }
+
+    .markdown-content :global(h1) {
+        display: none; /* Hidden as we show custom title */
+    }
+
+    .markdown-content :global(h2) {
+        font-size: 1.375rem;
+        font-weight: 600;
+        margin: 2.5rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        color: var(--text-color, #1f2937);
+    }
+
+    .markdown-content :global(h3) {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 1.5rem 0 0.75rem;
+        color: var(--text-color, #1f2937);
+    }
+
+    .markdown-content :global(p) {
+        margin: 1rem 0;
+    }
+
+    .markdown-content :global(ul),
+    .markdown-content :global(ol) {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .markdown-content :global(li) {
+        margin: 0.5rem 0;
+    }
+
+    .markdown-content :global(strong) {
+        font-weight: 600;
+    }
+
+    .markdown-content :global(hr) {
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        margin: 2rem 0;
+    }
+
+    .markdown-content :global(a) {
+        color: var(--accent, #2B357C);
+        text-decoration: none;
+    }
+
+    .markdown-content :global(a:hover) {
+        text-decoration: underline;
+    }
+
+    /* Responsive */
+    @@media (max-width: 640px) {
+        .release-title {
+            font-size: 1.5rem;
+        }
+
+        .release-meta {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .content-header {
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
