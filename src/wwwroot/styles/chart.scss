@@ -367,7 +367,7 @@ text[id*='_ChartTitle']:focus-visible {
             fill: GrayText !important;
             stroke: ButtonText !important;
         }
-        // Icon must stay contrasting on the violet background
+
         [id$='_Zooming_Pan']:hover path,
         [id$='_Zooming_Pan']:hover polygon,
         [id$='_Zooming_Zoom']:hover path,
