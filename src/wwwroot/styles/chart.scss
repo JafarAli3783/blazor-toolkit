@@ -203,7 +203,12 @@ text[id*='_ChartTitle']:focus-visible {
 
         // 2. Hovered legend → highlight colour (violet in Night Sky)
         g[id*='_chart_legend_g_']:hover text[id*='_chart_legend_text_'],
-        text[id*='_chart_legend_text_']:hover {
+        g[id*='_chart_legend_g_']:focus text[id*='_chart_legend_text_'],
+        g[id*='_chart_legend_g_']:focus-visible text[id*='_chart_legend_text_'],
+        g[id*='_chart_legend_g_']:focus-within text[id*='_chart_legend_text_'],
+        text[id*='_chart_legend_text_']:hover,
+        text[id*='_chart_legend_text_']:focus,
+        text[id*='_chart_legend_text_']:focus-visible {
             fill: Highlight !important;
         }
 
@@ -239,6 +244,19 @@ text[id*='_ChartTitle']:focus-visible {
         rect[id*='_chart_legend_shape_']:not([fill='none']) {
             stroke: CanvasText !important;
             stroke-width: 1 !important;
+        }
+
+        g[id*='_chart_legend_g_']:focus,
+        g[id*='_chart_legend_g_']:focus-visible {
+            outline: 2px solid Highlight !important;
+            outline-offset: 2px !important;
+        }
+
+        g[id*='_chart_legend_g_']:hover rect[id*='_chart_legend_shape_'],
+        g[id*='_chart_legend_g_']:focus rect[id*='_chart_legend_shape_'],
+        g[id*='_chart_legend_g_']:focus-visible rect[id*='_chart_legend_shape_'] {
+            stroke: Highlight !important;
+            stroke-width: 2 !important;
         }
 
         // ---------------------------------------------------------------
@@ -335,8 +353,18 @@ text[id*='_ChartTitle']:focus-visible {
         [id$='_Zooming_Zoom']:hover > rect,
         [id$='_Zooming_ZoomIn']:hover > rect,
         [id$='_Zooming_ZoomOut']:hover > rect,
-        [id$='_Zooming_Reset']:hover > rect {
-            fill: GrayText !important;        // ← light/medium gray (not bright white)
+        [id$='_Zooming_Reset']:hover > rect,
+        [id$='_Zooming_Pan']:focus > rect,
+        [id$='_Zooming_Zoom']:focus > rect,
+        [id$='_Zooming_ZoomIn']:focus > rect,
+        [id$='_Zooming_ZoomOut']:focus > rect,
+        [id$='_Zooming_Reset']:focus > rect,
+        [id$='_Zooming_Pan']:focus-visible > rect,
+        [id$='_Zooming_Zoom']:focus-visible > rect,
+        [id$='_Zooming_ZoomIn']:focus-visible > rect,
+        [id$='_Zooming_ZoomOut']:focus-visible > rect,
+        [id$='_Zooming_Reset']:focus-visible > rect {
+            fill: GrayText !important;
             stroke: ButtonText !important;
         }
         // Icon must stay contrasting on the violet background
@@ -349,8 +377,28 @@ text[id*='_ChartTitle']:focus-visible {
         [id$='_Zooming_ZoomOut']:hover path,
         [id$='_Zooming_ZoomOut']:hover polygon,
         [id$='_Zooming_Reset']:hover path,
-        [id$='_Zooming_Reset']:hover polygon {
-            fill: Highlight !important;          // ← dark colour so the icon stays visible
+        [id$='_Zooming_Reset']:hover polygon,
+        [id$='_Zooming_Pan']:focus path,
+        [id$='_Zooming_Pan']:focus polygon,
+        [id$='_Zooming_Zoom']:focus path,
+        [id$='_Zooming_Zoom']:focus polygon,
+        [id$='_Zooming_ZoomIn']:focus path,
+        [id$='_Zooming_ZoomIn']:focus polygon,
+        [id$='_Zooming_ZoomOut']:focus path,
+        [id$='_Zooming_ZoomOut']:focus polygon,
+        [id$='_Zooming_Reset']:focus path,
+        [id$='_Zooming_Reset']:focus polygon,
+        [id$='_Zooming_Pan']:focus-visible path,
+        [id$='_Zooming_Pan']:focus-visible polygon,
+        [id$='_Zooming_Zoom']:focus-visible path,
+        [id$='_Zooming_Zoom']:focus-visible polygon,
+        [id$='_Zooming_ZoomIn']:focus-visible path,
+        [id$='_Zooming_ZoomIn']:focus-visible polygon,
+        [id$='_Zooming_ZoomOut']:focus-visible path,
+        [id$='_Zooming_ZoomOut']:focus-visible polygon,
+        [id$='_Zooming_Reset']:focus-visible path,
+        [id$='_Zooming_Reset']:focus-visible polygon {
+            fill: Highlight !important;
         }
         // 3. Focus ring (keyboard)
         [id$='_Zooming_Pan']:focus-visible,

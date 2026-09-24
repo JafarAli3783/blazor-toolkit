@@ -453,6 +453,7 @@
   .e-checkbox-wrapper:hover .e-frame.e-check,
   .e-checkbox-wrapper:hover .e-frame.e-stop {
     background-color: ButtonText !important;
+    border-color: ButtonText !important;
   }
 
   .e-checkbox-wrapper:hover .e-frame.e-stop {
@@ -491,6 +492,16 @@
     background-color: HighlightText!important;
     border-color: Highlight !important;
     color: Highlight !important;
+    forced-color-adjust: none;
+  }
+
+  .e-checkbox-wrapper:hover .e-frame.e-stop:not(.e-check),
+  .e-css.e-checkbox-wrapper:hover .e-frame.e-stop:not(.e-check),
+  .e-checkbox-wrapper .e-frame.e-stop:not(.e-check):hover,
+  .e-css.e-checkbox-wrapper .e-frame.e-stop:not(.e-check):hover {
+    background-color: HighlightText!important;
+    border-color: ButtonText !important;
+    color: ButtonText !important;
     forced-color-adjust: none;
   }
 
@@ -1080,19 +1091,25 @@
       color: Highlight !important;
   }
 
-  .e-upload-browse-btn {
+  .e-upload-browse-btn,
+  .e-file-clear-btn,
+  .e-file-upload-btn {
     color: ButtonText !important;
     border-color: ButtonText !important;
     background-color: Canvas !important;
     forced-color-adjust: none;
   }
 
-  .e-upload-browse-btn:hover {
+  .e-upload-browse-btn:hover,
+  .e-file-clear-btn:hover,
+  .e-file-upload-btn:hover {
     color: Highlight !important;
     border-color: Highlight !important;
   }
 
-  .e-upload-browse-btn:focus-visible {
+  .e-upload-browse-btn:focus-visible,
+  .e-file-clear-btn:focus-visible,
+  .e-file-upload-btn:focus-visible {
     color: Highlight !important;
     border-color: Highlight !important;
   }
