@@ -236,7 +236,6 @@
 
     // Wide Layout: Track pages that should use full-width layout without the right TOC (e.g. Explore, Release Notes)
     private bool IsWideLayoutPage =>
-        Nav.Uri.Contains("/release-notes", StringComparison.OrdinalIgnoreCase) ||
         Nav.Uri.Contains("/explore", StringComparison.OrdinalIgnoreCase) ||
         Nav.Uri.Contains("/charts/overview", StringComparison.OrdinalIgnoreCase) ||
         Nav.Uri.EndsWith("/", StringComparison.OrdinalIgnoreCase);
