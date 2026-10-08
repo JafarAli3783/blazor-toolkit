@@ -193,6 +193,7 @@ public sealed class SfThemeRoot : ComponentBase
   --color-sf-danger-border-color-selected: var(--color-sf-danger-bg-color-selected);
   --color-sf-danger-text-selected: var(--color-sf-primary-text-color);
 
+
   --color-sf-tooltip-bg-color: var(--color-sf-content-bg-color-alt1);
   --color-sf-tooltip-border: var(--color-sf-content-bg-color-alt1);
   --color-sf-tooltip-text-color: var(--color-sf-content-text-color);
@@ -233,7 +234,7 @@ public sealed class SfThemeRoot : ComponentBase
   --e-font-family: var(--e-font-name);
   --e-font-sans: sans-serif;
   --e-radius: 1rem;
-  --e-border: 1px;
+  --e-border: 1rem;
 
 }
 
@@ -1278,6 +1279,33 @@ font-family: ""e-toolkit-icons"";
     border-color: Highlight !important;
     color: Highlight !important;
   }
+ .e-btn.e-control.e-btn-icon:not(:disabled):focus:hover, .e-btn.e-control:not(:disabled):focus, .e-btn.e-control:not(:disabled):hover {
+    border-color: Highlight !important;
+    color: Highlight !important;
+    background-color: HighlightText !important;
+    -webkit-text-fill-color: Highlight;
+    forced-color-adjust: none;
+  }
+
+  .e-btn.e-control.e-btn-icon:not(:disabled):focus-visible, .e-btn.e-control.e-lib.toggle-btn.e-outline[aria-pressed=false]:focus-visible, .e-btn.e-control.e-lib:focus-visible, .e-btn.e-control.e-outline:not(:disabled):focus-visible, .e-btn.toggle-icon-only.e-outline[aria-pressed=false]:not(:hover):focus-visible {
+    border-color: ButtonText !important;
+    color: ButtonText !important;
+    outline: 2px solid CanvasText !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px ButtonText !important;
+    -webkit-text-fill-color: ButtonText;
+    forced-color-adjust: none;
+  }
+    
+  .e-btn.e-control.e-btn-icon:not(:disabled):is(:hover,:active):focus-visible, .e-btn.e-control.e-lib.toggle-btn.e-outline:focus-visible:is(:hover,:active), .e-btn.e-control.e-lib:focus-visible:is(:hover,:active), .e-btn.e-control.e-outline:not(:disabled):is(:hover,:active):focus-visible, .e-btn.toggle-icon-only.e-outline:is(:hover,:active):focus-visible {
+    border-color: Highlight !important;
+    color: Highlight !important;
+    outline: 2px solid CanvasText !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 1px Highlight !important;
+    -webkit-text-fill-color: Highlight;
+    forced-color-adjust: none;
+  }
 
   .e-btn-group input + label.e-btn {
     border-color: ButtonText !important;
@@ -1807,6 +1835,39 @@ font-family: ""e-toolkit-icons"";
   .e-input-base-wrapper .e-input-group .e-chevron-down:hover::before,
   .e-input-base-wrapper .e-input-group .e-chevron-up:hover::before {
       color: Highlight !important;
+  }
+
+  .e-prompt-dialog .e-input-group,
+  .e-prompt-dialog .e-input {
+    border-color: ButtonText !important;
+  }
+
+  .e-prompt-dialog .e-input-group:focus-within,
+  .e-prompt-dialog .e-input:focus {
+    border-color: Highlight !important;
+  }
+
+  e-tooltip-wrap.e-popup,
+  e-tooltip-wrap.e-popup .e-tip-content {
+    overflow: visible !important;
+  }
+
+  .e-tooltip-wrap .e-close {
+    forced-color-adjust: none !important;
+    border-color: ButtonText !important;
+    background-color: ButtonFace !important;
+    color: ButtonText !important;
+  }
+
+  .e-tooltip-wrap .e-close:hover,
+  .e-tooltip-wrap .e-close:focus-visible {
+    background-color: Canvas !important;
+    color: Highlight !important;
+    border-color: Highlight !important;
+  }
+
+  .e-tooltip-wrap .e-close::before {
+    color: inherit;
   }
 }";
 
