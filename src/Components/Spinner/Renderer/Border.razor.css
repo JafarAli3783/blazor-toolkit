@@ -1,10 +1,32 @@
-.e-spin-fluent {
-    width: var(--spinner-size, 30px);
-    height: var(--spinner-size, 30px);
-    transform-origin: center;
+/* SfSpinner Border — Fluent-theme styling for the inner SVG spinner arc and
+   background circle. The path / arc elements are scoped to <Border>'s root
+   so that CSS isolation sees the .e-path-circle / .e-path-arc match.
+
+   The animation keyframe (`fluent-spinner-rotate`) lives in SfThemeRoot
+   because keyframes are document-global and cannot be scoped. */
+
+.e-path-circle {
+  fill: none;
+  stroke: var(--color-sf-primary-lighter);
+  stroke-width: 1.5;
 }
 
-.e-path-circle,
 .e-path-arc {
-    stroke-width: var(--spinner-thickness, 4px);
+  fill: none;
+  stroke: var(--color-sf-primary);
+  stroke-width: 1.5;
+}
+
+.e-spin-fluent {
+  animation: fluent-spinner-rotate 1.3s infinite cubic-bezier(0.53, 0.21, 0.29, 0.67);
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+  transform-origin: 50% 50%;
+}
+
+.e-spin-fluent .e-path-arc,
+.e-spin-fluent .e-path-circle {
+  fill: none;
+  stroke-width: 1.5;
 }
