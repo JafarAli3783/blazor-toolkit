@@ -112,7 +112,9 @@ jobs:
             echo "No embedded CycloneDX found – generating one"
             dotnet tool install --global CycloneDX || true
             export PATH="$PATH:$HOME/.dotnet/tools"
-            dotnet CycloneDX ./src/Syncfusion.Blazor.Toolkit.csproj -o "${{ env.SBOM_DIR }}" -j
+            dotnet-CycloneDX ./src/Syncfusion.Blazor.Toolkit.csproj \
+            --output "${{ env.SBOM_DIR }}" \
+            --filename bom.json
           fi
 
           echo "CycloneDX files:"
