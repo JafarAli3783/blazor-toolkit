@@ -126,11 +126,12 @@ jobs:
       - name: Generate SPDX SBOM
         run: |
           set -euo pipefail
-          # Install Microsoft's sbom-tool
-          dotnet tool install --global Microsoft.Sbom.Tool || true
+
+          # Install the correct .NET tool
+          dotnet tool install --global Microsoft.Sbom.DotNetTool || true
           export PATH="$PATH:$HOME/.dotnet/tools"
 
-          # Generate SPDX 2.2 JSON for the project
+          # Generate SPDX SBOM
           sbom-tool generate \
             -b "${{ env.NUGET_PACKAGES_DIR }}" \
             -bc ./src \
