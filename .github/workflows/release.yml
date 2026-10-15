@@ -52,7 +52,7 @@ jobs:
       # 3. Restore
       # -------------------------------------------------
       - name: Restore
-        run: dotnet restore ./Syncfusion.Blazor.Toolkit.slnx
+        run: dotnet restore ./src/Syncfusion.Blazor.Toolkit.slnx
 
       # -------------------------------------------------
       # 4. Vulnerability scan (fail on High / Critical)
