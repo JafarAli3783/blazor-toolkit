@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders bar (vertical) series by generating path options for each point and producing SVG path elements.

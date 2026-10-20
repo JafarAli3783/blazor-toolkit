@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents an SVG ellipse element wrapper used by DataViz components.

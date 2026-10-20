@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Spinner.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Serves as a base class for Syncfusion Blazor Spinner themes, providing common methods and properties for spinner rendering.

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders chart titles and subtitles with support for multiple positions, text wrapping, and styling.

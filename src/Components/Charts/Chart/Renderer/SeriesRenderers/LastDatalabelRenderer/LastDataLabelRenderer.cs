@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders the "last data label" visual for a series.

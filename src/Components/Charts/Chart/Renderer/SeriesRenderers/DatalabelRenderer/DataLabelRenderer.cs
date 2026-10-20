@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Globalization;
 using Microsoft.AspNetCore.Components;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents options used when rendering a data label template for a chart point.

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using Syncfusion.Blazor.Toolkit;
-using Syncfusion.Blazor.Toolkit.Calendars.Internal;
 using Syncfusion.Blazor.Toolkit;
 using Xunit;
 

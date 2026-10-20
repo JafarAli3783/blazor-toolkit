@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 using System.Text.Json.Serialization;
 
 namespace Syncfusion.Blazor.Toolkit

@@ -1,4 +1,4 @@
-﻿namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides shared rendering helpers for area-like series renderers.

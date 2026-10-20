@@ -1,9 +1,8 @@
 using System.ComponentModel;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Defines a renderer contract for chart child elements.

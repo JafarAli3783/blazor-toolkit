@@ -1,7 +1,6 @@
 using Bunit;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Toolkit;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 using Xunit;
 
 namespace Syncfusion.Blazor.Toolkit.Tests.Charts.Chart.Rendering

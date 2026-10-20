@@ -1,7 +1,6 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 using Syncfusion.Blazor.Toolkit.Internal;
 
 namespace Syncfusion.Blazor.Toolkit

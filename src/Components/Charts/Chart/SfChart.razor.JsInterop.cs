@@ -1,5 +1,4 @@
 using Microsoft.JSInterop;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Diagnostics.CodeAnalysis;

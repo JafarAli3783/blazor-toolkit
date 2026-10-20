@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders striplines for chart axes. Responsible for measuring, creating SVG path/rect/text options and rendering them.

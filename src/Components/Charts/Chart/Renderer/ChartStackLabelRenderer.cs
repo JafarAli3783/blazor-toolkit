@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders stack labels for stacked chart series.

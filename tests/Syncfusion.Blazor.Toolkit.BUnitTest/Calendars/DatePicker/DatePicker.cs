@@ -5,7 +5,6 @@ using AngleSharp.Css.Dom;
 using Syncfusion.Blazor.Toolkit;
 using Microsoft.AspNetCore.Components;
 using System.Globalization;
-using Syncfusion.Blazor.Toolkit.Calendars.Internal;
 
 namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
 {
@@ -1112,31 +1111,31 @@ namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
         {
             var calendar = RenderComponent<SfDatePicker<DateTime>>(parameters =>
             parameters.Add(calendar => calendar.Value, new DateTime(2020, 1, 1)));
-            var keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            var keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "altUpArrow",
             };
             await calendar.Instance.InputKeyActionHandleAsync(keyActionArgs, null, true);
             await Task.Delay(200);
-            keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "altDownArrow",
             };
             await calendar.Instance.InputKeyActionHandleAsync(keyActionArgs, null, true);
             await Task.Delay(200);
-            keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "escape",
             };
             await calendar.Instance.InputKeyActionHandleAsync(keyActionArgs, null, true);
             await Task.Delay(200);
-            keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "tab",
             };
             await calendar.Instance.InputKeyActionHandleAsync(keyActionArgs, null, true);
             await Task.Delay(200);
-            keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "select",
             };
@@ -1153,7 +1152,7 @@ namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
                 parameters.Add(calendar => calendar.Value, new DateTime(2020, 1, 1)));
             var inputElement = calendar.Find("input");
             inputElement.Change(new DateTime(2020, 1, 2));
-            var keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            var keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "select",
             };
@@ -1188,7 +1187,7 @@ namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
         {
             var calendar = RenderComponent<SfDatePicker<DateTime>>(parameters =>
                 parameters.Add(calendar => calendar.Value, new DateTime(2012, 3, 3)));
-            var keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            var keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "select",
                 Key = "Enter"
@@ -1216,7 +1215,7 @@ namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
         {
             var dateInstance = RenderComponent<SfDatePicker<DateTime>>(parameters => parameters
                 .Add(Cal => Cal.Value, new DateTime(1900, 1, 1)).Add(cal => cal.EnableMask , true).Add(cal => cal.Format , "dddd, MMMM dd, yyyy"));
-            var keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions{ Action = "altUpArrow", };
+            var keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions{ Action = "altUpArrow", };
             await dateInstance.Instance.InputKeyActionHandleAsync(keyActionArgs, "8/10/2024", true);
         }
 
@@ -1265,7 +1264,7 @@ namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
                 Add(Cal => Cal.Value, new DateTime(1900, 1, 1)));
             Assert.Equal(new DateTime(1900, 1, 1), dateInstance.Instance.Value);
             await dateInstance.Instance.ShowPopupAsync();
-            var keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            var keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "altDownArrow",
             };
@@ -1281,7 +1280,7 @@ namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.DatePicker
                 Add(Cal => Cal.Value, new DateTime(1900, 1, 1)));
             Assert.Equal(new DateTime(1900, 1, 1), dateInstance.Instance.Value);
             await dateInstance.Instance.ShowPopupAsync();
-            var keyActionArgs = new Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions
+            var keyActionArgs = new Syncfusion.Blazor.Toolkit.KeyActions
             {
                 Action = "tab",
                 TargetClassList = "tab-event"

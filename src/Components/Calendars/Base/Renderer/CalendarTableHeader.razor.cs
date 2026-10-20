@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Calendars.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents the header section for the calendar table, displaying the days of the week, based on the <see cref="CalendarView"/> and provided culture information.

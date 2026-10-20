@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 
 [assembly: InternalsVisibleTo("Syncfusion.Blazor.Toolkit.BUnitTest")]
 namespace Syncfusion.Blazor.Toolkit

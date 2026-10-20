@@ -1,5 +1,5 @@
 ﻿
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides hit-testing helpers for chart interaction (tooltip/selection/drag detection).

@@ -2,7 +2,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Bunit;
 using Microsoft.AspNetCore.Components.Web;
-using Syncfusion.Blazor.Toolkit.Inputs;
 using Xunit;
 
 namespace Syncfusion.Blazor.Toolkit.Tests.Inputs.NumericTextBox

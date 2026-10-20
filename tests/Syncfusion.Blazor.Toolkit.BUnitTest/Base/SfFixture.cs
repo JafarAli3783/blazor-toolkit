@@ -2,7 +2,6 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 
 namespace Syncfusion.Blazor.Toolkit.Tests
 {

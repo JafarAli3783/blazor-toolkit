@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Syncfusion.Blazor.Toolkit.Internal;
 
-namespace Syncfusion.Blazor.Toolkit.Calendars.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides the base rendering logic for the Gregorian Calendar user interface, allowing users to select and interact with dates via a visual calendar component in Blazor.

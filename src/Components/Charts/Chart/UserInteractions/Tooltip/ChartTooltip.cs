@@ -1,4 +1,4 @@
-﻿namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Chart tooltip runtime binder that leverages <see cref="TooltipBase"/> infrastructure.

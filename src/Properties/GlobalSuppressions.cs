@@ -75,14 +75,14 @@ using System.Diagnostics.CodeAnalysis;
     "CA1002:Do not expose generic lists",
     Justification = "2026-10-01: Parameter is deserialized from JavaScript via [JSInvokable]; System.Text.Json requires a concrete List<T>.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.SetTooltipTemplateElementSizeAsync(System.Double,System.Double,System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.Charts.Internal.IChartTooltipInfo})")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.SetTooltipTemplateElementSizeAsync(System.Double,System.Double,System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.IChartTooltipInfo})")]
 
 [assembly: SuppressMessage(
     "Design",
     "CA1002:Do not expose generic lists",
     Justification = "2026-10-01: Parameter is deserialized from JavaScript via [JSInvokable]; System.Text.Json requires a concrete List<T>.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.SfUploader.CreateFileListAsync(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.Inputs.Internal.UploadFileDetails},System.Boolean)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.SfUploader.CreateFileListAsync(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.UploadFileDetails},System.Boolean)")]
 
 [assembly: SuppressMessage(
     "Design",
@@ -96,7 +96,7 @@ using System.Diagnostics.CodeAnalysis;
     "CA1002:Do not expose generic lists",
     Justification = "2026-10-01: Parameter is deserialized from JavaScript via [JSInvokable]; System.Text.Json requires a concrete List<T>.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.SfUploader.UpdateServerFileDataAsync(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.Inputs.Internal.UploadFileDetails},System.Boolean)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.SfUploader.UpdateServerFileDataAsync(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.UploadFileDetails},System.Boolean)")]
 
 
 // -------------------------------------------------------------------------
@@ -288,161 +288,161 @@ using System.Diagnostics.CodeAnalysis;
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartInternalMouseEventArgs.Touches")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.ChartInternalMouseEventArgs.Touches")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.DataLabelAnimatioInfo.TemplateId")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.DataLabelAnimatioInfo.TemplateId")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.IAxis.Labels")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.IAxis.Labels")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.IChartPoint.Regions")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.IChartPoint.Regions")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.IChartPoint.SymbolLocations")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.IChartPoint.SymbolLocations")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.ISharedTooltipRenderEventArgs.Data")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.ISharedTooltipRenderEventArgs.Data")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.ISharedTooltipRenderEventArgs.Text")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.ISharedTooltipRenderEventArgs.Text")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.InitialAnimationInfo.PointHeight")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.InitialAnimationInfo.PointHeight")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.InitialAnimationInfo.PointIndex")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.InitialAnimationInfo.PointIndex")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.InitialAnimationInfo.PointWidth")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.InitialAnimationInfo.PointWidth")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.InitialAnimationInfo.PointX")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.InitialAnimationInfo.PointX")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.InitialAnimationInfo.PointY")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.InitialAnimationInfo.PointY")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.MarkerAnimationInfo.LowPointIndex")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.MarkerAnimationInfo.LowPointIndex")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.MarkerAnimationInfo.LowPointX")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.MarkerAnimationInfo.LowPointX")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.MarkerAnimationInfo.LowPointY")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.MarkerAnimationInfo.LowPointY")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.MarkerAnimationInfo.PointIndex")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.MarkerAnimationInfo.PointIndex")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.MarkerAnimationInfo.PointX")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.MarkerAnimationInfo.PointX")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.MarkerAnimationInfo.PointY")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.MarkerAnimationInfo.PointY")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.PatternOptions.ShapeOptions")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.PatternOptions.ShapeOptions")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.SvgPattern.ShapeOptions")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.SvgPattern.ShapeOptions")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Internal rendering-pipeline model; the chart layout/render stage reassigns this collection, so the public setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.SvgSelectionRectCollection.SelectedRectangles")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.SvgSelectionRectCollection.SelectedRectangles")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Attribute-splat dictionary rendered onto the element; Blazor assigns it through the public setter, so the setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.SvgText.HtmlAttributes")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.SvgText.HtmlAttributes")]
 
 [assembly: SuppressMessage(
     "Usage",
     "CA2227:Collection properties should be read only",
     Justification = "2026-10-01: Attribute-splat dictionary rendered onto the element; Blazor assigns it through the public setter, so the setter must remain.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.TooltipData.Attributes")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.TooltipData.Attributes")]
 
 [assembly: SuppressMessage(
     "Usage",
@@ -1031,28 +1031,28 @@ using System.Diagnostics.CodeAnalysis;
     "CA1711:Identifiers should not have incorrect suffix",
     Justification = "2026-10-01: The 'EventArgs' suffix is the idiomatic Blazor convention for component event payload types.",
     Scope = "type",
-    Target = "~T:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartInternalMouseEventArgs")]
+    Target = "~T:Syncfusion.Blazor.Toolkit.ChartInternalMouseEventArgs")]
 
 [assembly: SuppressMessage(
     "Naming",
     "CA1711:Identifiers should not have incorrect suffix",
     Justification = "2026-10-01: The 'EventArgs' suffix is the idiomatic Blazor convention for component event payload types.",
     Scope = "type",
-    Target = "~T:Syncfusion.Blazor.Toolkit.Charts.Internal.ISharedTooltipRenderEventArgs")]
+    Target = "~T:Syncfusion.Blazor.Toolkit.ISharedTooltipRenderEventArgs")]
 
 [assembly: SuppressMessage(
     "Naming",
     "CA1711:Identifiers should not have incorrect suffix",
     Justification = "2026-10-01: The 'EventArgs' suffix is the idiomatic Blazor convention for component event payload types.",
     Scope = "type",
-    Target = "~T:Syncfusion.Blazor.Toolkit.Charts.Internal.ITooltipRenderEventArgs")]
+    Target = "~T:Syncfusion.Blazor.Toolkit.ITooltipRenderEventArgs")]
 
 [assembly: SuppressMessage(
     "Naming",
     "CA1711:Identifiers should not have incorrect suffix",
     Justification = "2026-10-01: Internal rendering-pipeline collection type; the 'Collection' suffix accurately describes the member and is not consumer-facing.",
     Scope = "type",
-    Target = "~T:Syncfusion.Blazor.Toolkit.Charts.Internal.SvgSelectionRectCollection")]
+    Target = "~T:Syncfusion.Blazor.Toolkit.SvgSelectionRectCollection")]
 
 [assembly: SuppressMessage(
     "Naming",
@@ -1463,49 +1463,49 @@ using System.Diagnostics.CodeAnalysis;
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: Default axis models (ChartPrimaryXAxis / ChartPrimaryYAxis / InitAxis) are never rendered and ownership is transferred to the Axes/Elements collections. DisposeAsync would be a no-op and disposing here would be incorrect.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartAxisRendererContainer.AddRenderer(Syncfusion.Blazor.Toolkit.Charts.Internal.IChartElementRenderer)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.ChartAxisRendererContainer.AddRenderer(Syncfusion.Blazor.Toolkit.IChartElementRenderer)")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartSeriesBorder is a non-rendered model object passed by value into SetTrendlineValues; it owns no JS/unmanaged resources so DisposeAsync is a no-op.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.TrendlineBase.SetSeriesProperties")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.TrendlineBase.SetSeriesProperties")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartTrendline is a non-rendered model object used only for a local polynomial-order calculation; it owns no JS/unmanaged resources so DisposeAsync is a no-op.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.TrendlineBase.GetPolynomialPoints(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double})")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.TrendlineBase.GetPolynomialPoints(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double})")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartMarker is a non-rendered model object handed to UpdateSeriesProperties; it owns no JS/unmanaged resources so DisposeAsync is a no-op.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.TrendlineBase.UpdateTrendlineMarker")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.TrendlineBase.UpdateTrendlineMarker")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartDefaultAnimation is a non-rendered model object used only to compute animation settings; it owns no JS/unmanaged resources so DisposeAsync is a no-op.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.TrendlineBase.UpdateTrendlineAnimation")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.TrendlineBase.UpdateTrendlineAnimation")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartSelectedDataIndex is a non-rendered model object; CreateSelectedData hands it to SelectionChartAsync which serializes it across JS interop (ownership transferred). It owns no JS/unmanaged resources.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.Selection.SelectPointAndAddToValues(Syncfusion.Blazor.Toolkit.Point,Syncfusion.Blazor.Toolkit.Charts.Internal.ChartSeriesRenderer,System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.PointXY})")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.Selection.SelectPointAndAddToValues(Syncfusion.Blazor.Toolkit.Point,Syncfusion.Blazor.Toolkit.ChartSeriesRenderer,System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.PointXY})")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartAxis / ChartAxisScrollbarSettingsRange models built here are non-rendered and are handed into the user's OnScrollChanged event args (ownership transferred). They own no JS/unmanaged resources.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.TriggerScrollEvents(Syncfusion.Blazor.Toolkit.Charts.Internal.IScrollEventsArgs)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.TriggerScrollEvents(Syncfusion.Blazor.Toolkit.IScrollEventsArgs)")]
 
 [assembly: SuppressMessage(
     "Reliability",
@@ -1519,14 +1519,14 @@ using System.Diagnostics.CodeAnalysis;
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: ChartAxisScrollbarSettingsRange / ChartAxis models built here are non-rendered and are wrapped into the returned ScrollEventArgs (ownership transferred). They own no JS/unmanaged resources.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.GetScrollArguments(System.String,Syncfusion.Blazor.Toolkit.ChartAxis,Syncfusion.Blazor.Toolkit.Charts.Internal.DoubleRange,System.Double,System.Double,Syncfusion.Blazor.Toolkit.ChartAxisScrollbarSettingsRange,System.Double)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.GetScrollArguments(System.String,Syncfusion.Blazor.Toolkit.ChartAxis,Syncfusion.Blazor.Toolkit.DoubleRange,System.Double,System.Double,Syncfusion.Blazor.Toolkit.ChartAxisScrollbarSettingsRange,System.Double)")]
 
 [assembly: SuppressMessage(
     "Reliability",
     "CA2000:Dispose objects before losing scope",
     Justification = "2026-10-01: The flagged out-locals alias already-rendered, renderer-owned ChartAxis / ChartStripline components resolved from existing collections; disposing them here would be a double-dispose.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartStriplineTooltipSettings.MouseMoveHandlerAsync(System.String)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.ChartStriplineTooltipSettings.MouseMoveHandlerAsync(System.String)")]
 
 
 // -------------------------------------------------------------------------
@@ -1983,14 +1983,14 @@ using System.Diagnostics.CodeAnalysis;
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. [Parameter] DateTime[] bound via @bind against user-supplied arrays in multi-selection mode (see documented examples). Changing the type is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.MultiValues")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.MultiValues")]
 
 [assembly: SuppressMessage(
     "Performance",
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. [Parameter] DateTime[] on the public calendar cell renderer, bound against user-supplied arrays in multi-selection mode. Changing the type is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarDayCell`1.MultiselectValues")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.CalendarDayCell`1.MultiselectValues")]
 
 [assembly: SuppressMessage(
     "Performance",
@@ -2018,14 +2018,14 @@ using System.Diagnostics.CodeAnalysis;
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. JSON/JS-interop box-plot model; Outliers maps to a JavaScript array in the chart tooltip/series wire contract. Changing to a read-only collection is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.BoxPoint.Outliers")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.BoxPoint.Outliers")]
 
 [assembly: SuppressMessage(
     "Performance",
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. JSON/JS-interop box-plot model; YValueCollection maps to a JavaScript array in the chart tooltip/series wire contract. Changing to a read-only collection is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.BoxPoint.YValueCollection")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.BoxPoint.YValueCollection")]
 
 [assembly: SuppressMessage(
     "Performance",
@@ -2039,21 +2039,21 @@ using System.Diagnostics.CodeAnalysis;
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. JSON/JS-interop tooltip model; Content maps to a JavaScript array of content strings in the wire contract. Changing to a read-only collection is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.SVGTooltip.Content")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.SVGTooltip.Content")]
 
 [assembly: SuppressMessage(
     "Performance",
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. JSON/JS-interop tooltip model; Palette maps to a JavaScript array of color strings in the wire contract. Changing to a read-only collection is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.SVGTooltip.Palette")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.SVGTooltip.Palette")]
 
 [assembly: SuppressMessage(
     "Performance",
     "CA1819:Properties should not return arrays",
     Justification = "2026-10-01: Public API. JSON/JS-interop tooltip model; Shapes maps to a JavaScript array of legend-marker shapes in the wire contract. Changing to a read-only collection is a binary/source breaking change.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.SVGTooltip.Shapes")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.SVGTooltip.Shapes")]
 
 [assembly: SuppressMessage(
     "Performance",
@@ -2104,42 +2104,42 @@ using System.Diagnostics.CodeAnalysis;
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.CellClickAsync(Syncfusion.Blazor.Toolkit.CellDetails)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.CellClickAsync(Syncfusion.Blazor.Toolkit.CellDetails)")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.ClickHandlerAsync(Syncfusion.Blazor.Toolkit.CellDetails)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.ClickHandlerAsync(Syncfusion.Blazor.Toolkit.CellDetails)")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.HandleSelectKeyAsync(Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions,Syncfusion.Blazor.Toolkit.CellDetails,System.Boolean,System.Int32)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.HandleSelectKeyAsync(Syncfusion.Blazor.Toolkit.KeyActions,Syncfusion.Blazor.Toolkit.CellDetails,System.Boolean,System.Int32)")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.HandleYearViewClickAsync(Syncfusion.Blazor.Toolkit.CellDetails,System.DateTime,System.Boolean)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.HandleYearViewClickAsync(Syncfusion.Blazor.Toolkit.CellDetails,System.DateTime,System.Boolean)")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.PrepareKeyboardNavigation")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.PrepareKeyboardNavigation")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Calendars.Internal.CalendarBaseRender`1.SelectKeyActionAsync(Syncfusion.Blazor.Toolkit.Calendars.Internal.KeyActions,Syncfusion.Blazor.Toolkit.CellDetails,System.Boolean,System.Int32)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.CalendarBaseRender`1.SelectKeyActionAsync(Syncfusion.Blazor.Toolkit.KeyActions,Syncfusion.Blazor.Toolkit.CellDetails,System.Boolean,System.Int32)")]
 
 [assembly: SuppressMessage(
     "Style",
@@ -2202,21 +2202,21 @@ using System.Diagnostics.CodeAnalysis;
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartSeriesRendererContainer.CalculateStackingValues(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.ChartSeries},System.Boolean)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.ChartSeriesRendererContainer.CalculateStackingValues(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.ChartSeries},System.Boolean)")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain the guarded assignment; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartSeriesRendererContainer.FindFrequencies(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.ChartSeries})")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.ChartSeriesRendererContainer.FindFrequencies(System.Collections.Generic.List{Syncfusion.Blazor.Toolkit.ChartSeries})")]
 
 [assembly: SuppressMessage(
     "Style",
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain all three guarded assignments; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.LegendBase.HandlePaging(System.String)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.LegendBase.HandlePaging(System.String)")]
 
 [assembly: SuppressMessage(
     "Style",
@@ -2244,7 +2244,7 @@ using System.Diagnostics.CodeAnalysis;
     "IDE0031:Use null propagation",
     Justification = "2026-10-02: Retain all three guarded assignments; null-conditional assignment requires C# 14 and cannot compile in shared net8.0/C# 12 or net9.0/C# 13 source.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.ZoomingComplete(Syncfusion.Blazor.Toolkit.ZoomingEventArgs,Syncfusion.Blazor.Toolkit.Charts.Internal.IZoomingStates)")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.SfChart.ZoomingComplete(Syncfusion.Blazor.Toolkit.ZoomingEventArgs,Syncfusion.Blazor.Toolkit.IZoomingStates)")]
 
 [assembly: SuppressMessage(
     "Style",
@@ -2900,7 +2900,7 @@ using System.Diagnostics.CodeAnalysis;
     "IDE0032:Use auto property",
     Justification = "2026-10-02: AxisLayout changes clear/re-register axes and invalidate layout; an ordinary auto-property loses these side effects, and C# 14 field syntax is unavailable on net8.0/C# 12 and net9.0/C# 13.",
     Scope = "member",
-    Target = "~F:Syncfusion.Blazor.Toolkit.Charts.Internal.ChartAxisRendererContainer._axisLayout")]
+    Target = "~F:Syncfusion.Blazor.Toolkit.ChartAxisRendererContainer._axisLayout")]
 
 [assembly: SuppressMessage(
     "Style",
@@ -2999,7 +2999,7 @@ using System.Diagnostics.CodeAnalysis;
     "IDE0391:Make method synchronous",
     Justification = "2026-10-02: Keep initialization in OnInitializedAsync rather than moving it to OnInitialized; preserve Blazor lifecycle ordering, the async override/base-call contract for subclasses and faulted-Task error delivery.",
     Scope = "member",
-    Target = "~M:Syncfusion.Blazor.Toolkit.Charts.Internal.TrimTooltipBase.OnInitializedAsync")]
+    Target = "~M:Syncfusion.Blazor.Toolkit.TrimTooltipBase.OnInitializedAsync")]
 
 
 // -------------------------------------------------------------------------
@@ -3027,14 +3027,14 @@ using System.Diagnostics.CodeAnalysis;
     "IDE1006:Naming Styles",
     Justification = "2026-10-02: Internal location model uses lowercase x as a JS/JSON wire name; renaming to satisfy CLR naming style would change serialization compatibility.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.IChartInternalLocation.x")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.IChartInternalLocation.x")]
 
 [assembly: SuppressMessage(
     "Naming",
     "IDE1006:Naming Styles",
     Justification = "2026-10-02: Internal location model uses lowercase y as a JS/JSON wire name; renaming to satisfy CLR naming style would change serialization compatibility.",
     Scope = "member",
-    Target = "~P:Syncfusion.Blazor.Toolkit.Charts.Internal.IChartInternalLocation.y")]
+    Target = "~P:Syncfusion.Blazor.Toolkit.IChartInternalLocation.y")]
 
 [assembly: SuppressMessage(
     "Naming",

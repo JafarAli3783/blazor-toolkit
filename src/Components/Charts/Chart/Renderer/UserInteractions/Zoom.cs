@@ -1,5 +1,5 @@
 ﻿
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Handles zooming and panning interactions for charts.

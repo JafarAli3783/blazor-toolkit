@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Syncfusion.Blazor.Toolkit.Calendars.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents a base renderer for the calendar component in the Syncfusion Blazor library, responsible for rendering the Gregorian calendar view and enabling users to select dates interactively.

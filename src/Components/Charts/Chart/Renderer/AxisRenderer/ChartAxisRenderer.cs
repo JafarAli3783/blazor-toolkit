@@ -4,7 +4,7 @@ using Syncfusion.Blazor.Toolkit.Internal;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents a double precision numeric range with helper operations.

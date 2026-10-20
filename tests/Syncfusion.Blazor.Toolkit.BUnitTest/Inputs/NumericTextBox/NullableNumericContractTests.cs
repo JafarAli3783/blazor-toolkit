@@ -1,6 +1,5 @@
 using System.Reflection;
 using Bunit;
-using Syncfusion.Blazor.Toolkit.Inputs;
 using Xunit;
 
 namespace Syncfusion.Blazor.Toolkit.Tests.Inputs.NumericTextBox

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Components;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides shared legend layout, measurement, and rendering logic for chart components.

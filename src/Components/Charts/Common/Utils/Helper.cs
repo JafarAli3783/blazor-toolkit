@@ -2,7 +2,7 @@ using System.Dynamic;
 using System.Globalization;
 using System.Text.Json;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Helper utilities used across DataVizCommon components.

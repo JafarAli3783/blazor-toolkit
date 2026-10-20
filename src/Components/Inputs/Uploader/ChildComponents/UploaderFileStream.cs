@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Syncfusion.Blazor.Toolkit.Inputs.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     internal class UploaderStreamReader
     {

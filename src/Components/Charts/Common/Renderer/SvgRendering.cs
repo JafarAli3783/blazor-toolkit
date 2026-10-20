@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>Provides utilities for rendering SVG elements in Blazor components via RenderTreeBuilder.</summary>
     /// <remarks>

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders series markers for a chart. Responsible for computing marker shapes,

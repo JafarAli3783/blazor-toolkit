@@ -1,7 +1,5 @@
 using System.Reflection;
 using System.Text.Json;
-using Syncfusion.Blazor.Toolkit.Calendars;
-using Syncfusion.Blazor.Toolkit.Calendars.Internal;
 using Xunit;
 
 namespace Syncfusion.Blazor.Toolkit.Tests.Calendars.Calendar
