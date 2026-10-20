@@ -1,5 +1,4 @@
 using Bunit;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 
 namespace Syncfusion.Blazor.Toolkit.Tests
 {

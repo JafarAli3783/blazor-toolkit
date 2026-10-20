@@ -1,5 +1,5 @@
 ﻿
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Base renderer for column/bar style series. Contains shared geometry and layout helpers

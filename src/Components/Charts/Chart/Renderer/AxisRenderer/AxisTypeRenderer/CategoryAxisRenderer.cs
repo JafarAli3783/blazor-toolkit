@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renderer for category axes. Handles labels that map to an explicit collection of string categories.

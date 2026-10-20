@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 

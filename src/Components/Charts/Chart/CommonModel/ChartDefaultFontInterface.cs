@@ -1,4 +1,4 @@
-﻿namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides options for customizing the text style of the chart component.

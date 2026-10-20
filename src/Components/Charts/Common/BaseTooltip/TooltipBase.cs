@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides shared tooltip data and lifecycle management for chart components.

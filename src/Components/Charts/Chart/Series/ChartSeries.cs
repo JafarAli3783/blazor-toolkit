@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
-using Syncfusion.Blazor.Toolkit.Data;
 using Syncfusion.Blazor.Toolkit.Internal;
 
 namespace Syncfusion.Blazor.Toolkit

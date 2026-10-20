@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
-using Syncfusion.Blazor.Toolkit.Inputs.Internal;
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.ComponentModel;
 using System.Dynamic;

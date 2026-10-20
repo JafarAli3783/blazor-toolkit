@@ -1,4 +1,4 @@
-﻿namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents the border styling configuration for chart elements.

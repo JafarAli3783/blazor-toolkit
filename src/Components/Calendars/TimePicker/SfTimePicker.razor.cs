@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using Syncfusion.Blazor.Toolkit.Interfaces;
-using Syncfusion.Blazor.Toolkit.Calendars.Internal;
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.Globalization;
 using System.Text.RegularExpressions;

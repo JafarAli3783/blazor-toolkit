@@ -4,7 +4,7 @@ using System.Text;
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.Text.RegularExpressions;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Manages runtime behavior of stripline tooltips (show/hide, content building, and interop rendering).

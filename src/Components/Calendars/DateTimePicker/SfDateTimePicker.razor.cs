@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Components.Web;
-using Syncfusion.Blazor.Toolkit.Calendars.Internal;
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.Globalization;
 

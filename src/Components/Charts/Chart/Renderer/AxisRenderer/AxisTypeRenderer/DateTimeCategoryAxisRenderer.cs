@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Syncfusion.Blazor.Toolkit.Internal;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renderer for axes that represent DateTime values but behave as category axis.

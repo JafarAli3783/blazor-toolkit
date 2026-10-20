@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     internal partial class Selection : BaseSelection
     {

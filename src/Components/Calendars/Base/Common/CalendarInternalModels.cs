@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 
-namespace Syncfusion.Blazor.Toolkit.Calendars.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents the key actions performed within components of the calendar, such as navigation and selection of dates.

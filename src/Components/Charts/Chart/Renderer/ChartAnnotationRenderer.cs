@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders and manages chart annotations, including positioning and visibility.

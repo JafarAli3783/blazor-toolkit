@@ -1,5 +1,5 @@
 ﻿
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     internal partial class CartesianAxisLayout
     {

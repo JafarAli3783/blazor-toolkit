@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides base selection functionality for chart components, including pattern definition and rendering.

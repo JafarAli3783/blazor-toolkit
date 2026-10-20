@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renderer responsible for displaying the "no data" template inside the chart.

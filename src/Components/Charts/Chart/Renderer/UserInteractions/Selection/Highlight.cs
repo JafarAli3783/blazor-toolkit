@@ -1,4 +1,4 @@
-﻿namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Handles highlight interactions for a chart instance.

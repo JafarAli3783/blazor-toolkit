@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders numeric axis logic for the chart. Provides numeric range padding, visible label generation, formatting and other numeric axis related computations.

@@ -4,7 +4,7 @@ using Syncfusion.Blazor.Toolkit.Internal;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Localization;
 
-namespace Syncfusion.Blazor.Toolkit.Calendars.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// The Calendar base is a graphical user interface component that displays a Gregorian Calendar, and allows a user to select a date.

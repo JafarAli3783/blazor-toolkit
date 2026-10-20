@@ -4,7 +4,7 @@ using Syncfusion.Blazor.Toolkit.Internal;
 using System.Globalization;
 using System.Text;
 
-namespace Syncfusion.Blazor.Toolkit.Calendars.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Provides base rendering functionality for the calendar, allowing users to interact with and select Gregorian or supported alternative calendar dates.

@@ -1,5 +1,4 @@
 using Microsoft.JSInterop;
-using Syncfusion.Blazor.Toolkit.Inputs.Internal;
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Components;

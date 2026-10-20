@@ -1,5 +1,5 @@
 ﻿
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Base renderer for date/time axes. Provides helpers to compute time intervals and skeleton formats.

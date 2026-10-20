@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 
 namespace Syncfusion.Blazor.Toolkit
 {

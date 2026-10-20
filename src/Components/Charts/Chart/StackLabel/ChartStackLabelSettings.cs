@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 

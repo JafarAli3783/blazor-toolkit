@@ -2,7 +2,7 @@
 using Syncfusion.Blazor.Toolkit.Internal;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Tooltip helper component backing logic for trimmed tooltips used by chart components.

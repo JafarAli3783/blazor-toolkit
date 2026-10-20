@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Blazor.Toolkit.Internal;
 
-namespace Syncfusion.Blazor.Toolkit.Spinner.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders the spinner SVG element for Fluent theme.

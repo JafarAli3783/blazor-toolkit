@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Base renderer for spline series implementations.

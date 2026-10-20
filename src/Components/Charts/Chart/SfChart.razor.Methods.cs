@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using Syncfusion.Blazor.Toolkit.Charts.Internal;
 
 namespace Syncfusion.Blazor.Toolkit
 {
@@ -303,7 +302,7 @@ namespace Syncfusion.Blazor.Toolkit
         /// </example> 
         [RequiresUnreferencedCode(ChartSeriesRenderer.DataBindingTrimWarning)]
         [RequiresDynamicCode(ChartSeriesRenderer.DataBindingAotWarning)]
-        public void Sort(string propertyName, Data.ListSortDirection direction)
+        public void Sort(string propertyName, ListSortDirection direction)
         {
             _sorting.SetSortKeyAndDirection(propertyName, direction);
             _ = RefreshChartAsync();

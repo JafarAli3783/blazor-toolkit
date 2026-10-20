@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Toolkit.Tests
 @using Syncfusion.Blazor.Toolkit;
 
-@using Syncfusion.Blazor.Toolkit.Charts.Internal
 @using Microsoft.AspNetCore.Components.Web
 @using Bunit
 @using Xunit
@@ -61,7 +60,7 @@
         Assert.True(cut.Instance._dataEditingModule._isPointDragging);
         await cut.InvokeAsync(() => cut.Instance.OnZoomingMouseEnd(args));
         Assert.False(cut.Instance._isPointMouseDown);
-        var editing = new Syncfusion.Blazor.Toolkit.Charts.Internal.DataEditing(chart);
+        var editing = new Syncfusion.Blazor.Toolkit.DataEditing(chart);
         editing.Dispose();
     }
 

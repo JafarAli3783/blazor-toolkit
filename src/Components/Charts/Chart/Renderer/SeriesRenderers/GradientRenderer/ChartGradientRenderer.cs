@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components.Rendering;
 using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// <c>ChartGradientRenderer</c> is responsible for rendering SVG gradient definitions for Series, Trendlines, and Indicators.

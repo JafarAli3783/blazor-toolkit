@@ -1,6 +1,6 @@
 ﻿using Syncfusion.Blazor.Toolkit.Internal;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Renders a datetime axis with proper start/end alignment, interval calculations, and label generation.

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Represents font and text related styling used by tooltip rendering.

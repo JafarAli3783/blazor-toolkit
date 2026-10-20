@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Syncfusion.Blazor.Toolkit.Charts.Internal
+namespace Syncfusion.Blazor.Toolkit
 {
     /// <summary>
     /// Manages data point editing interactions in the chart, including dragging and repositioning.
