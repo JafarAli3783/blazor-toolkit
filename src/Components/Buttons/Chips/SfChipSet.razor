@@ -5,7 +5,7 @@
 @inherits SfBaseComponent
 
 <SfThemeRoot />
-<div @ref="rootReference" @attributes="RootAttributes()" @onkeydown="OnKeyDownAsync">
+<div @ref="_rootReference" @attributes="RootAttributes()" @onkeydown="OnKeyDownAsync">
     @if (HasError && ErrorTemplate is not null)
     {
         @ErrorTemplate
@@ -32,18 +32,18 @@
                 @RenderProjected(chip)
             </div>
         }
-        @if (OverflowMode == ChipOverflowMode.Collapse && hiddenCount > 0)
+        @if (OverflowMode == ChipOverflowMode.Collapse && _hiddenCount > 0)
         {
-            <button type="button" class="e-chipset-overflow" data-testid="chip-overflow" aria-expanded="@(overflowExpanded ? "true" : "false")" @onclick="ToggleOverflowAsync">
-                @if (OverflowExpandTemplate is not null && !overflowExpanded)
+            <button type="button" class="e-chipset-overflow" data-testid="chip-overflow" aria-expanded="@(_overflowExpanded ? "true" : "false")" @onclick="ToggleOverflowAsync">
+                @if (OverflowExpandTemplate is not null && !_overflowExpanded)
                 {
-                    @OverflowExpandTemplate(hiddenCount)
+                    @OverflowExpandTemplate(_hiddenCount)
                 }
                 else
                 {
-                    @(overflowExpanded
+                    @(_overflowExpanded
                         ? ChipResources.Format(Localizer, ChipResources.ShowLessKey, "Show less")
-                        : ChipResources.Format(Localizer, ChipResources.ShowMoreKey, "Show {0} more", hiddenCount))
+                        : ChipResources.Format(Localizer, ChipResources.ShowMoreKey, "Show {0} more", _hiddenCount))
                 }
             </button>
         }

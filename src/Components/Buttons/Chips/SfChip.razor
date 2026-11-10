@@ -4,23 +4,23 @@
 @inherits SfBaseComponent
 
 <SfThemeRoot />
-@if (!removed)
+@if (!_removed)
 {
     @if (RootTag == "button")
     {
-        <button @key="RootTag" @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onclick:stopPropagation="true" @onkeydown="OnKeyDownAsync">
+        <button @key="RootTag" @ref="_rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onclick:stopPropagation="true" @onkeydown="OnKeyDownAsync">
             @Inner
         </button>
     }
     else if (RootTag == "a")
     {
-        <a @key="RootTag" @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
+        <a @key="RootTag" @ref="_rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
             @Inner
         </a>
     }
     else
     {
-        <span @key="RootTag" @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
+        <span @key="RootTag" @ref="_rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
             @Inner
         </span>
     }
@@ -92,7 +92,7 @@
             builder.AddAttribute(seq++, "disabled", RemoveDisabled);
             builder.AddAttribute(seq++, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, OnRemoveClickAsync));
             builder.AddEventStopPropagationAttribute(seq++, "onclick", true);
-            builder.AddElementReferenceCapture(seq++, reference => removeReference = reference);
+            builder.AddElementReferenceCapture(seq++, reference => _removeReference = reference);
             if (RemoveTemplate is not null)
             {
                 builder.AddContent(seq++, RemoveTemplate);
