@@ -80,7 +80,7 @@ public partial class SfChipSet<TItem> : SfBaseComponent, IChipSetRegistration
         ProjectedChip? chip = projected.FirstOrDefault(item => ChipKeyComparer.Instance.Equals(item.Model.Key, key) && !item.Removed);
         focusedIndex = chip is null ? focusedIndex : projected.IndexOf(chip);
         focusTargetId = chip?.ElementId;
-        return chip is null ? ValueTask.CompletedTask : chip.Reference.FocusAsync();
+        return chip?.Chip is null ? ValueTask.CompletedTask : chip.Chip.FocusAsync();
     }
 
     /// <summary>Removes a chip by key. Does not mutate <see cref="SfChipSet{TItem}.DataSource"/>.</summary>
@@ -370,6 +370,10 @@ public partial class SfChipSet<TItem> : SfBaseComponent, IChipSetRegistration
 
     private void Rebuild()
     {
+        Dictionary<object, SfChip> chips = projected
+            .Where(chip => chip.Chip is not null)
+            .GroupBy(chip => chip.Model.Key, ChipKeyComparer.Instance)
+            .ToDictionary(group => group.Key, group => group.First().Chip!, ChipKeyComparer.Instance);
         projected.Clear();
         if (DataSource is null)
         {
@@ -420,7 +424,8 @@ public partial class SfChipSet<TItem> : SfBaseComponent, IChipSetRegistration
                 Item = DataSource.ElementAt(index),
                 Model = model,
                 ElementId = $"{RootId}-chip-{index}",
-                Removed = removedKeys.Any(existing => ChipKeyComparer.Instance.Equals(existing, model.Key) || ChipKeyComparer.Instance.Equals(existing, model.Value)),
+                Chip = chips.TryGetValue(model.Key, out SfChip? existing) ? existing : null,
+                Removed = removedKeys.Any(existingKey => ChipKeyComparer.Instance.Equals(existingKey, model.Key) || ChipKeyComparer.Instance.Equals(existingKey, model.Value)),
                 TabIndex = index == focusedIndex ? 0 : -1,
             });
             index++;
@@ -612,8 +617,6 @@ public partial class SfChipSet<TItem> : SfBaseComponent, IChipSetRegistration
         internal bool Collapsed { get; set; }
 
         internal int TabIndex { get; set; } = -1;
-
-        internal ElementReference Reference { get; set; }
 
         internal SfChip? Chip { get; set; }
     }

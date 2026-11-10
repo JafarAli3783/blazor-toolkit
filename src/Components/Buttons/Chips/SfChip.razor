@@ -8,19 +8,19 @@
 {
     @if (RootTag == "button")
     {
-        <button @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onclick:stopPropagation="true" @onkeydown="OnKeyDownAsync">
+        <button @key="RootTag" @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onclick:stopPropagation="true" @onkeydown="OnKeyDownAsync">
             @Inner
         </button>
     }
     else if (RootTag == "a")
     {
-        <a @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
+        <a @key="RootTag" @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
             @Inner
         </a>
     }
     else
     {
-        <span @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
+        <span @key="RootTag" @ref="rootReference" @attributes="RootAttributes()" @onclick="OnClickAsync" @onkeydown="OnKeyDownAsync">
             @Inner
         </span>
     }
@@ -89,10 +89,7 @@
             builder.AddAttribute(seq++, "class", "e-chip-remove");
             builder.AddAttribute(seq++, "data-testid", "chip-remove");
             builder.AddAttribute(seq++, "aria-label", RemoveLabel);
-            if (RemoveDisabled)
-            {
-                builder.AddAttribute(seq++, "disabled", true);
-            }
+            builder.AddAttribute(seq++, "disabled", RemoveDisabled);
             builder.AddAttribute(seq++, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, OnRemoveClickAsync));
             builder.AddEventStopPropagationAttribute(seq++, "onclick", true);
             builder.AddElementReferenceCapture(seq++, reference => removeReference = reference);

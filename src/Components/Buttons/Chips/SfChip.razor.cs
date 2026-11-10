@@ -65,6 +65,7 @@ public partial class SfChip : SfBaseComponent
             HasError ? "e-chip-error" : null,
             IsLoading ? "e-chip-loading" : null,
             CssClass,
+            EnableRtl || (Owner is null && SyncfusionService?._options.EnableRtl == true) ? "e-rtl" : null,
         }.Where(token => !string.IsNullOrWhiteSpace(token)));
 
     /// <summary>Moves focus to the chip root.</summary>
@@ -158,6 +159,11 @@ public partial class SfChip : SfBaseComponent
         if (ReadOnly)
         {
             attributes["aria-readonly"] = "true";
+        }
+
+        if (EnableRtl || (Owner is null && SyncfusionService?._options.EnableRtl == true))
+        {
+            attributes["dir"] = "rtl";
         }
 
         return attributes;
