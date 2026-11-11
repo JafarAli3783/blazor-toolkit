@@ -84,14 +84,6 @@ namespace Syncfusion.Blazor.Toolkit
         [Parameter]
         public bool AllowEmpty { get; set; } = true;
 
-        /// <summary>Host policy flag. The set does not drop duplicates from <see cref="DataSource"/>.</summary>
-        [Parameter]
-        public bool AllowDuplicates { get; set; }
-
-        /// <summary>Host policy limit. Bound items are never dropped to satisfy this value.</summary>
-        [Parameter]
-        public int? MaxChips { get; set; }
-
         /// <summary>Default chip type for projected items.</summary>
         [Parameter]
         public ChipType ChipType { get; set; } = ChipType.Informational;

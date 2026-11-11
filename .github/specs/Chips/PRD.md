@@ -182,7 +182,6 @@ Blazor Server, WebAssembly, static SSR (markup), interactive SSR, Auto if repo s
 - Complete XML documentation  
 - Eight realistic samples maximum  
 - Explicit token composition guidance  
-- Narrative only: MaxChips does not truncate DataSource; host owns add validation.
 
 ---
 
@@ -258,7 +257,6 @@ Deliver **equal feature coverage** on declarative chips, filter/choice, removabl
 
 - Sample uses host `&lt;input&gt;` + ChipSet  
 - No required text field parameter on SfChip  
-- Duplicates rejected when AllowDuplicates false  
 
 ### US-08 — Keyboard-only filter bar
 **As a** keyboard user **I want** to move and toggle filters without a mouse.  

@@ -4,9 +4,9 @@
 |-------|-------|
 | **Component** | `SfChip` / `SfChipSet<TItem>` |
 | **Host** | `samples/Blazor.Toolkit.Samples` |
-| **Catalog route** | `/chips/chip` |
+| **Catalog route** | `/buttons/chip` |
 | **Catalog page** | `samples/Blazor.Toolkit.Samples.Client/Pages/Components/Buttons/Chip.razor` |
-| **Demos folder** | `samples/Blazor.Toolkit.Samples.Client/Pages/Demos/Chips/Chip/` |
+| **Demos folder** | `samples/Blazor.Toolkit.Samples.Client/Pages/Demos/Buttons/Chip/` |
 | **Catalog layout styles** | Keep Chip-catalog-only layout styles in the `<style>` block in `Chip.razor`, as requested. Do not copy Card-specific styles or move Chip theme/color rules into demo CSS. |
 | **Visual reference** | `chip-demos-preview.html` is a standalone concept preview. Use it as a layout and interaction reference; implement with the real Toolkit components, not copied static HTML or its mock CSS/JavaScript. |
 

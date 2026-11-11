@@ -226,8 +226,6 @@ ValueTask FocusRemoveAsync();
 | SelectedValue | `object?` | `null` |
 | SelectedValues | `IEnumerable<object?>?` | `null` |
 | AllowEmpty | `bool` | `true` |
-| AllowDuplicates | `bool` | `false` |
-| MaxChips | `int?` | `null` |
 
 ### Appearance
 
@@ -478,7 +476,6 @@ Declarative `ChildContent` registers each `SfChip` with the set. Selection and r
 | Shape | Rounded |
 | OverflowMode | Wrap |
 | AllowEmpty | true |
-| AllowDuplicates | false |
 | Removable | false |
 | Disabled | false |
 | ReadOnly | false |
@@ -495,9 +492,7 @@ Declarative `ChildContent` registers each `SfChip` with the set. Selection and r
 | Choice plus ChipSelectionMode.Multiple | Debug diagnostic, then behave as Single |
 | Single and multiple selection values simultaneously configured | Active mode determines precedence |
 | Complex data without ItemKey | Selection stability not guaranteed |
-| MaxChips exceeded | Do not silently remove bound items |
 | Inaccessible RemoveTemplate | Author responsibility; accessibility tests must fail |
-| MaxChips exceeded by DataSource | Render all bound items; MaxChips is host add policy only; set does **not** silently drop DataSource items |
 
 ---
 

@@ -304,8 +304,6 @@ Support either individual `Func`/`string` field parameters or a `ChipFields` obj
 ### 8.5 Duplicates
 
 - **Keys:** must be unique among rendered chips. Duplicate keys: debug assert/log; render first occurrence only or last — **implementation lock:** skip subsequent duplicates and ignore them for selection.  
-- **Values:** `AllowDuplicates` default **false** for token-style adds from host; selection values unique in Multiple mode.
-- **MaxChips:** host add-policy signal only; the set must not silently truncate or drop items already in `DataSource`.
 
 ---
 

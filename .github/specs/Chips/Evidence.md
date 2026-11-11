@@ -45,7 +45,7 @@ Runtime results are in section 4.
 | Enums | `ChipType`, `ChipSelectionMode`, `ChipVariant`, `ChipSize`, `ChipShape`, `ChipOverflowMode`, `ChipRemoveReason` with the specified numeric values | `ChipEnumerations.cs` matches | Passed (source) |
 | `SfChip` parameters | Text, Value, ChipType, Variant, Size, Shape, IconCss, ImageUrl, ImageAlt, Href, Target, Rel, Selected, Removable, Disabled, ReadOnly, IsLoading, HasError, CssClass, Style, Id, ARIA parameters, TabIndex, HtmlAttributes, ChildContent, templates, EnableRtl | `SfChip.razor.Members.cs`. Defaults match `API.md`. | Passed (source) |
 | `SfChip` events and methods | OnClick, SelectedChanged, Removing, Removed, `FocusAsync`, `FocusRemoveAsync` | Present with the argument types in `API.md` | Passed (source) |
-| `SfChipSet` binding and selection | DataSource, selectors, Fields, ChildContent, SelectionMode, SelectedValue, SelectedValues, AllowEmpty, AllowDuplicates, MaxChips | `SfChipSet.razor.Members.cs` | Passed (source) |
+| `SfChipSet` binding and selection | DataSource, selectors, Fields, ChildContent, SelectionMode, SelectedValue, SelectedValues, AllowEmpty | `SfChipSet.razor.Members.cs` | Passed (source) |
 | `SfChipSet` appearance, templates, events, and methods | ChipType through OverflowExpandedChanged, plus select, clear, focus, remove, expand, and collapse | Present with the documented defaults | Passed (source) |
 | `ChipFields` and event arguments | Text, Value, Disabled, Removable, IconCss, ImageUrl, ImageAlt, CssClass, Href, and the five event argument types | `ChipFields.cs` and `ChipEventArgs.cs` | Passed (source) |
 

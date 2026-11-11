@@ -14,7 +14,6 @@ namespace Syncfusion.Blazor.Toolkit
     /// <typeparam name="TItem">Data item type. Use <see cref="string"/> for declarative-only sets.</typeparam>
     /// <remarks>
     /// The parent owns <see cref="SfChipSet{TItem}.DataSource"/>. Removal hides a chip; it does not mutate the source.
-    /// <see cref="SfChipSet{TItem}.MaxChips"/> and <see cref="SfChipSet{TItem}.AllowDuplicates"/> are host policy and never drop bound items.
     /// </remarks>
     public partial class SfChipSet<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)] TItem> : SfBaseComponent, IChipSetRegistration
     {

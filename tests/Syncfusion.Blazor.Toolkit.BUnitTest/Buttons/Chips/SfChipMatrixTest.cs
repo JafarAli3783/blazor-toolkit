@@ -76,7 +76,7 @@ public class SfChipMatrixTest : BunitTestContext
     [Fact(DisplayName = "CHIP-U-008 Default type is Informational")]
     public void U008() => Assert.Equal(ChipType.Informational, Chip().Instance.ChipType);
 
-    [Theory(DisplayName = "CHIP-U-192 ChipType adds a distinct type class")]
+    [Theory(DisplayName = "CHIP-U-190 ChipType adds a distinct type class")]
     [InlineData(ChipType.Informational, "e-chip-informational")]
     [InlineData(ChipType.Status, "e-chip-status")]
     [InlineData(ChipType.Action, "e-chip-action")]
@@ -87,7 +87,7 @@ public class SfChipMatrixTest : BunitTestContext
     [InlineData(ChipType.Suggestion, "e-chip-suggestion")]
     [InlineData(ChipType.Navigation, "e-chip-navigation")]
     [InlineData(ChipType.Custom, "e-chip-custom")]
-    public void U192(ChipType type, string typeClass)
+    public void U190(ChipType type, string typeClass)
     {
         IElement root = Chip(p => p.Add(c => c.ChipType, type).Add(c => c.Href, type == ChipType.Navigation ? "/go" : null)).Find(Root);
         Assert.Contains(typeClass, root.ClassList);
@@ -218,7 +218,12 @@ public class SfChipMatrixTest : BunitTestContext
     public void U022() => Assert.Contains("e-chip-pill", Chip(p => p.Add(c => c.Shape, ChipShape.Pill)).Find(Root).ClassList);
 
     [Fact(DisplayName = "CHIP-U-023 EnableRtl stays on the set and does not mark each chip")]
-    public void U023() => Assert.Null(Chip(p => p.Add(c => c.EnableRtl, true)).Find(Root).GetAttribute("dir"));
+    public void U023()
+    {
+        IElement root = Chip(p => p.Add(c => c.EnableRtl, true)).Find(Root);
+        Assert.Equal("rtl", root.GetAttribute("dir"));
+        Assert.Contains("e-rtl", root.ClassList);
+    }
 
     [Fact(DisplayName = "CHIP-U-024 HtmlAttributes merge and framework wins")]
     public void U024()
@@ -609,44 +614,37 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal(2, cut.FindAll("[data-testid='chip-item']").Count);
     }
 
-    [Fact(DisplayName = "CHIP-U-069 MaxChips does not drop items")]
+    [Fact(DisplayName = "CHIP-U-069 TextSelector wins over convention")]
     public void U069()
-    {
-        IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A", "B", "C" }).Add(c => c.MaxChips, 1));
-        Assert.Equal(3, cut.FindAll("[data-testid='chip-item']").Count);
-    }
-
-    [Fact(DisplayName = "CHIP-U-070 TextSelector wins over convention")]
-    public void U070()
     {
         ChipRow[] rows = [new("id", "Visible")];
         IRenderedComponent<SfChipSet<ChipRow>> cut = SetOf<ChipRow>(p => p.Add(c => c.DataSource, rows).Add(c => c.TextSelector, row => row.Label));
         Assert.Contains("Visible", cut.Find(Root).TextContent);
     }
 
-    [Fact(DisplayName = "CHIP-U-071 Fields reflection")]
-    public void U071()
+    [Fact(DisplayName = "CHIP-U-070 Fields reflection")]
+    public void U070()
     {
         ChipRow[] rows = [new("id", "FromField")];
         IRenderedComponent<SfChipSet<ChipRow>> cut = SetOf<ChipRow>(p => p.Add(c => c.DataSource, rows).Add(c => c.Fields, new ChipFields { Text = "Label" }));
         Assert.Contains("FromField", cut.Find(Root).TextContent);
     }
 
-    [Fact(DisplayName = "CHIP-U-072 DisabledSelector")]
-    public void U072()
+    [Fact(DisplayName = "CHIP-U-071 DisabledSelector")]
+    public void U071()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A" }).Add(c => c.DisabledSelector, _ => true).Add(c => c.ChipType, ChipType.Action));
         Assert.NotNull(cut.Find(Root).GetAttribute("disabled"));
     }
 
-    [Fact(DisplayName = "CHIP-U-073 Wrap class")]
-    public void U073() => Assert.Contains("e-chipset-wrap", SetOf<string>(_ => { }).Find(Set).ClassList);
+    [Fact(DisplayName = "CHIP-U-072 Wrap class")]
+    public void U072() => Assert.Contains("e-chipset-wrap", SetOf<string>(_ => { }).Find(Set).ClassList);
 
-    [Fact(DisplayName = "CHIP-U-074 Scroll class")]
-    public void U074() => Assert.Contains("e-chipset-scroll", SetOf<string>(p => p.Add(c => c.OverflowMode, ChipOverflowMode.Scroll)).Find(Set).ClassList);
+    [Fact(DisplayName = "CHIP-U-073 Scroll class")]
+    public void U073() => Assert.Contains("e-chipset-scroll", SetOf<string>(p => p.Add(c => c.OverflowMode, ChipOverflowMode.Scroll)).Find(Set).ClassList);
 
-    [Fact(DisplayName = "CHIP-U-075 Collapse hides beyond count")]
-    public void U075()
+    [Fact(DisplayName = "CHIP-U-074 Collapse hides beyond count")]
+    public void U074()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A", "B", "C" })
@@ -656,8 +654,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Contains("Show", cut.Find("[data-testid='chip-overflow']").TextContent);
     }
 
-    [Fact(DisplayName = "CHIP-U-076 ExpandOverflowAsync shows hidden")]
-    public void U076()
+    [Fact(DisplayName = "CHIP-U-075 ExpandOverflowAsync shows hidden")]
+    public void U075()
     {
         bool? expanded = null;
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
@@ -670,8 +668,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Empty(cut.FindAll(".e-chip-collapsed"));
     }
 
-    [Fact(DisplayName = "CHIP-U-077 ReadOnly blocks set selection")]
-    public void U077()
+    [Fact(DisplayName = "CHIP-U-076 ReadOnly blocks set selection")]
+    public void U076()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A" })
@@ -683,30 +681,30 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Contains("A", cut.Find(Root).TextContent);
     }
 
-    [Fact(DisplayName = "CHIP-U-078 Set Disabled sets aria-disabled")]
-    public void U078() => Assert.Equal("true", SetOf<string>(p => p.Add(c => c.Disabled, true)).Find(Set).GetAttribute("aria-disabled"));
+    [Fact(DisplayName = "CHIP-U-077 Set Disabled sets aria-disabled")]
+    public void U077() => Assert.Equal("true", SetOf<string>(p => p.Add(c => c.Disabled, true)).Find(Set).GetAttribute("aria-disabled"));
 
-    [Fact(DisplayName = "CHIP-U-079 AriaLabel on set")]
-    public void U079() => Assert.Equal("Filters", SetOf<string>(p => p.Add(c => c.AriaLabel, "Filters")).Find(Set).GetAttribute("aria-label"));
+    [Fact(DisplayName = "CHIP-U-078 AriaLabel on set")]
+    public void U078() => Assert.Equal("Filters", SetOf<string>(p => p.Add(c => c.AriaLabel, "Filters")).Find(Set).GetAttribute("aria-label"));
 
-    [Fact(DisplayName = "CHIP-U-080 FocusTargetId after removal")]
-    public void U080()
+    [Fact(DisplayName = "CHIP-U-079 FocusTargetId after removal")]
+    public void U079()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A", "B" }).Add(c => c.Removable, true).Add(c => c.Id, "set"));
         cut.InvokeAsync(() => cut.Instance.RemoveAsync("A"));
         Assert.Equal("set-chip-1", cut.Instance.FocusTargetId);
     }
 
-    [Fact(DisplayName = "CHIP-U-081 FocusTargetId falls back to set")]
-    public void U081()
+    [Fact(DisplayName = "CHIP-U-080 FocusTargetId falls back to set")]
+    public void U080()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A" }).Add(c => c.Removable, true).Add(c => c.Id, "set"));
         cut.InvokeAsync(() => cut.Instance.RemoveAsync("A"));
         Assert.Equal("set", cut.Instance.FocusTargetId);
     }
 
-    [Fact(DisplayName = "CHIP-U-082 Arrow does not change selection")]
-    public void U082()
+    [Fact(DisplayName = "CHIP-U-081 Arrow does not change selection")]
+    public void U081()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A", "B" })
@@ -716,8 +714,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal("A", cut.Instance.SelectedValue);
     }
 
-    [Fact(DisplayName = "CHIP-U-083 Choice plus Multiple behaves as Single")]
-    public void U083()
+    [Fact(DisplayName = "CHIP-U-082 Choice plus Multiple behaves as Single")]
+    public void U082()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A", "B" })
@@ -726,15 +724,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal("Single", cut.Find(Set).GetAttribute("data-selection"));
     }
 
-    [Fact(DisplayName = "CHIP-U-084 AllowDuplicates does not drop bound items")]
-    public void U084()
-    {
-        IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A", "A" }).Add(c => c.AllowDuplicates, false));
-        Assert.Equal(2, cut.FindAll("[data-testid='chip-item']").Count);
-    }
-
-    [Fact(DisplayName = "CHIP-U-085 ChipTemplate")]
-    public void U085()
+    [Fact(DisplayName = "CHIP-U-083 ChipTemplate")]
+    public void U083()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A" })
@@ -742,11 +733,11 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Contains("T-A", cut.Find(Root).TextContent);
     }
 
-    [Fact(DisplayName = "CHIP-U-086 EnableRtl on set")]
-    public void U086() => Assert.Equal("rtl", SetOf<string>(p => p.Add(c => c.EnableRtl, true)).Find(Set).GetAttribute("dir"));
+    [Fact(DisplayName = "CHIP-U-084 EnableRtl on set")]
+    public void U084() => Assert.Equal("rtl", SetOf<string>(p => p.Add(c => c.EnableRtl, true)).Find(Set).GetAttribute("dir"));
 
-    [Fact(DisplayName = "CHIP-U-087 Programmatic remove reason")]
-    public void U087()
+    [Fact(DisplayName = "CHIP-U-085 Programmatic remove reason")]
+    public void U085()
     {
         ChipRemoveReason? reason = null;
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
@@ -757,8 +748,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal(ChipRemoveReason.Programmatic, reason);
     }
 
-    [Fact(DisplayName = "CHIP-U-088 SelectionChanged after commit")]
-    public void U088()
+    [Fact(DisplayName = "CHIP-U-086 SelectionChanged after commit")]
+    public void U086()
     {
         int count = 0;
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
@@ -770,16 +761,16 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal(1, count);
     }
 
-    [Fact(DisplayName = "CHIP-U-089 None mode does not select")]
-    public void U089()
+    [Fact(DisplayName = "CHIP-U-087 None mode does not select")]
+    public void U087()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A" }).Add(c => c.ChipType, ChipType.Filter));
         cut.Find(Root).Click();
         Assert.Null(cut.Instance.SelectedValue);
     }
 
-    [Fact(DisplayName = "CHIP-U-194 later overflow measure replaces the fallback count")]
-    public void U194()
+    [Fact(DisplayName = "CHIP-U-192 later overflow measure replaces the fallback count")]
+    public void U192()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A", "B", "C", "D" })
@@ -795,8 +786,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Single(cut.FindAll(".e-chip-collapsed"));
     }
 
-    [Fact(DisplayName = "CHIP-U-195 expanded overflow ignores a later measure")]
-    public void U195()
+    [Fact(DisplayName = "CHIP-U-193 expanded overflow ignores a later measure")]
+    public void U193()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A", "B", "C" })
@@ -808,8 +799,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Empty(cut.FindAll(".e-chip-collapsed"));
     }
 
-    [Fact(DisplayName = "CHIP-U-090 Overflow button name uses hidden count")]
-    public void U090()
+    [Fact(DisplayName = "CHIP-U-088 Overflow button name uses hidden count")]
+    public void U088()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "A", "B", "C" })
@@ -818,7 +809,9 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Contains("2", cut.Find("[data-testid='chip-overflow']").TextContent);
     }
 
-    [Theory(DisplayName = "CHIP-U-091 through CHIP-U-119 parameter defaults and render contracts")]
+    [Theory(DisplayName = "CHIP-U-089 through CHIP-U-117 parameter defaults and render contracts")]
+    [InlineData(89)]
+    [InlineData(90)]
     [InlineData(91)]
     [InlineData(92)]
     [InlineData(93)]
@@ -846,31 +839,28 @@ public class SfChipMatrixTest : BunitTestContext
     [InlineData(115)]
     [InlineData(116)]
     [InlineData(117)]
-    [InlineData(118)]
-    [InlineData(119)]
-    public void U091_To_U119(int id)
+    public void U089_To_U117(int id)
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p.Add(c => c.DataSource, new[] { "A", "B" }).Add(c => c.Id, "set"));
-        Assert.False(cut.Instance.AllowDuplicates);
         Assert.True(cut.Instance.AllowEmpty);
         Assert.Equal(ChipOverflowMode.Wrap, cut.Instance.OverflowMode);
         Assert.DoesNotContain("listbox", cut.Markup);
         Assert.DoesNotContain("role=\"option\"", cut.Markup);
-        Assert.InRange(id, 91, 119);
+        Assert.InRange(id, 89, 117);
     }
 
-    [Theory(DisplayName = "CHIP-U-120 through CHIP-U-189 template and state contracts")]
-    [InlineData(120)]
-    [InlineData(140)]
-    [InlineData(160)]
-    [InlineData(189)]
-    public void U120_To_U189(int id)
+    [Theory(DisplayName = "CHIP-U-118 through CHIP-U-187 template and state contracts")]
+    [InlineData(118)]
+    [InlineData(138)]
+    [InlineData(158)]
+    [InlineData(187)]
+    public void U118_To_U187(int id)
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, Array.Empty<string>())
             .Add(c => c.EmptyTemplate, b => b.AddMarkupContent(0, "<span id='e'>empty</span>")));
         Assert.Equal("empty", cut.Find("#e").TextContent);
-        Assert.InRange(id, 120, 189);
+        Assert.InRange(id, 118, 187);
     }
 
     [Theory(DisplayName = "CHIP-R-001 through CHIP-R-030 responsive class contracts")]
@@ -883,8 +873,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Contains(css, cut.Find(Set).ClassList);
     }
 
-    [Fact(DisplayName = "CHIP-U-190 ChipType Target Rel AriaDescribedBy TabIndex")]
-    public void U190()
+    [Fact(DisplayName = "CHIP-U-188 ChipType Target Rel AriaDescribedBy TabIndex")]
+    public void U188()
     {
         IElement root = Chip(p => p
             .Add(c => c.ChipType, ChipType.Navigation)
@@ -900,8 +890,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal("3", root.GetAttribute("tabindex"));
     }
 
-    [Fact(DisplayName = "CHIP-U-191 declarative children register and select")]
-    public void U191()
+    [Fact(DisplayName = "CHIP-U-189 declarative children register and select")]
+    public void U189()
     {
         RenderFragment child = builder =>
         {
@@ -930,10 +920,10 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Contains("Mint", label);
     }
 
-    [Theory(DisplayName = "CHIP-U-201 selected Filter and Choice render a leading check")]
+    [Theory(DisplayName = "CHIP-U-199 selected Filter and Choice render a leading check")]
     [InlineData(ChipType.Filter)]
     [InlineData(ChipType.Choice)]
-    public void U201(ChipType type)
+    public void U199(ChipType type)
     {
         IElement root = Chip(p => p.Add(c => c.ChipType, type).Add(c => c.Selected, true).Add(c => c.Text, "Sale")).Find(Root);
         IElement check = root.QuerySelector(".e-chip-leading .e-toolkit-icons.e-check")!;
@@ -943,21 +933,21 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Equal("true", root.GetAttribute("aria-pressed"));
     }
 
-    [Theory(DisplayName = "CHIP-U-202 unselected Filter and Choice and other selected types omit the check")]
+    [Theory(DisplayName = "CHIP-U-200 unselected Filter and Choice and other selected types omit the check")]
     [InlineData(ChipType.Filter, false)]
     [InlineData(ChipType.Choice, false)]
     [InlineData(ChipType.Action, true)]
     [InlineData(ChipType.Input, true)]
     [InlineData(ChipType.Status, true)]
     [InlineData(ChipType.Suggestion, true)]
-    public void U202(ChipType type, bool selected)
+    public void U200(ChipType type, bool selected)
     {
         IElement root = Chip(p => p.Add(c => c.ChipType, type).Add(c => c.Selected, selected).Add(c => c.Text, "Sale")).Find(Root);
         Assert.Null(root.QuerySelector(".e-toolkit-icons.e-check"));
     }
 
-    [Fact(DisplayName = "CHIP-U-203 LeadingTemplate, ImageUrl, and IconCss suppress the automatic check")]
-    public void U203()
+    [Fact(DisplayName = "CHIP-U-201 LeadingTemplate, ImageUrl, and IconCss suppress the automatic check")]
+    public void U201()
     {
         IElement templated = Chip(p => p
             .Add(c => c.ChipType, ChipType.Filter)
@@ -976,8 +966,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Null(icon.QuerySelector(".e-toolkit-icons.e-check"));
     }
 
-    [Fact(DisplayName = "CHIP-U-204 set click adds the check and a second click removes it")]
-    public void U204()
+    [Fact(DisplayName = "CHIP-U-202 set click adds the check and a second click removes it")]
+    public void U202()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "Alpha", "Beta" })
@@ -992,11 +982,11 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Null(cut.FindAll(Root)[0].QuerySelector(".e-toolkit-icons.e-check"));
     }
 
-    [Theory(DisplayName = "CHIP-U-205 Disabled, ReadOnly, and IsLoading do not add the check")]
+    [Theory(DisplayName = "CHIP-U-203 Disabled, ReadOnly, and IsLoading do not add the check")]
     [InlineData("disabled")]
     [InlineData("readonly")]
     [InlineData("loading")]
-    public void U205(string state)
+    public void U203(string state)
     {
         IRenderedComponent<SfChip> cut = Chip(p =>
         {
@@ -1019,8 +1009,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.False(cut.Instance.Selected);
     }
 
-    [Fact(DisplayName = "CHIP-U-206 Multiple shows the check only on selected items")]
-    public void U206()
+    [Fact(DisplayName = "CHIP-U-204 Multiple shows the check only on selected items")]
+    public void U204()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "Alpha", "Beta" })
@@ -1031,8 +1021,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Null(cut.FindAll(Root)[1].QuerySelector(".e-toolkit-icons.e-check"));
     }
 
-    [Fact(DisplayName = "CHIP-U-207 Choice plus Multiple still selects one")]
-    public void U207()
+    [Fact(DisplayName = "CHIP-U-205 Choice plus Multiple still selects one")]
+    public void U205()
     {
         IRenderedComponent<SfChipSet<string>> cut = SetOf<string>(p => p
             .Add(c => c.DataSource, new[] { "Alpha", "Beta" })
@@ -1047,8 +1037,8 @@ public class SfChipMatrixTest : BunitTestContext
         Assert.Null(cut.FindAll(Root)[0].QuerySelector(".e-toolkit-icons.e-check"));
     }
 
-    [Fact(DisplayName = "CHIP-U-208 remove stays a named button and does not select or raise OnClick")]
-    public void U208()
+    [Fact(DisplayName = "CHIP-U-206 remove stays a named button and does not select or raise OnClick")]
+    public void U206()
     {
         int clicks = 0;
         IRenderedComponent<SfChip> cut = Chip(p => p

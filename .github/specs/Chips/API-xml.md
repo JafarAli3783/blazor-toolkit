@@ -330,11 +330,6 @@ public partial class SfChipSet<TItem> : ComponentBase
     /// <summary>Allows clearing the selected value in single mode.</summary>
     /// <value>Default is <c>true</c>.</value>
     [Parameter] public bool AllowEmpty { get; set; } = true;
-    /// <summary>Host policy flag for whether duplicate token values may be added.</summary>
-    /// <value>Default is <c>false</c>.</value>
-    [Parameter] public bool AllowDuplicates { get; set; }
-    /// <summary>Maximum chips for host add validation. Does not silently truncate <see cref="DataSource"/>.</summary>
-    [Parameter] public int? MaxChips { get; set; }
     /// <summary>Disables interaction for the entire set.</summary>
     [Parameter] public bool Disabled { get; set; }
     /// <summary>Prevents user selection and removal changes.</summary>

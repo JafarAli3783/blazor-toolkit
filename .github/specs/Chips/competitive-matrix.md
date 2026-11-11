@@ -64,8 +64,6 @@ Legend: **Y** = publicly supported · **P** = partial / via another control · *
 | Editable chip text | P | P | P | P | N | N | N | **N v1** | Future | — |
 | Built-in token textbox | P | P | Y | Y | Y | P | P | **N core** | Composition sample | PRD NG-01 |
 | Delimiter tokenization | P | P | Y | Y | Y | P | P | **Host** | Sample host input | sample |
-| Duplicate handling | P | P | Y | Y | P | N | P | **R** | AllowDuplicates | unit |
-| Max chip count | P | P | Y | Y | P | N | P | **R** | MaxChips (add policy) | unit |
 | Icons | Y | Y | Y | Y | Y | Y | Y | **R** | IconCss / template | unit |
 | Avatars/images | Y | P | P | P | P | N | Y | **R** | ImageUrl / template | unit |
 | Badges | P | P | P | P | Y | Y | Y | **P** | Trailing template | sample |
